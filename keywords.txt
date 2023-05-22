@@ -1,0 +1,74 @@
+# Syntax Coloring Map For Finder7M
+
+
+# Datatypes (KEYWORD1)
+
+Finder7M                                    KEYWORD1
+Measure                                     KEYWORD1
+Finder7MSerialNumber                        KEYWORD1
+
+
+# Methods and Functions (KEYWORD2)
+
+Finder7M                                    KEYWORD2
+init                                        KEYWORD2
+getSerialNumber                             KEYWORD2
+getSoftwareReference                        KEYWORD2
+getHardwareReference                        KEYWORD2
+getMIDInActiveEnergy                        KEYWORD2
+getMIDExActiveEnergy                        KEYWORD2
+getMIDInReactiveEnergy                      KEYWORD2
+getMIDExReactiveEnergy                      KEYWORD2
+getMIDInActiveEnergyXK                      KEYWORD2
+getMIDExActiveEnergyXK                      KEYWORD2
+getMIDInReactiveEnergyXK                    KEYWORD2
+getMIDExReactiveEnergyXK                    KEYWORD2
+getFrequency                                KEYWORD2
+getVoltage                                  KEYWORD2
+getActivePowerTotal                         KEYWORD2
+getReactivePowerTotal                       KEYWORD2
+getApparentPowerTotal                       KEYWORD2
+getRunTime                                  KEYWORD2
+modbus7MRead16                              KEYWORD2
+modbus7MRead32                              KEYWORD2
+convertT5                                   KEYWORD2
+convertT6                                   KEYWORD2
+Measure                                     KEYWORD2
+mantissa                                    KEYWORD2
+exponent                                    KEYWORD2
+toFloat                                     KEYWORD2
+
+
+# Constants (LITERAL1)
+
+FINDER_7M_REF_SERIAL_NUMBER                 LITERAL1
+FINDER_7M_REF_SOFTWARE_REFERENCE            LITERAL1
+FINDER_7M_REF_HARDWARE_REFERENCE            LITERAL1
+FINDER_7M_REG_RUN_TIME                      LITERAL1
+FINDER_7M_REG_FREQUENCY                     LITERAL1
+FINDER_7M_REG_U1                            LITERAL1
+FINDER_7M_REG_U2                            LITERAL1
+FINDER_7M_REG_U3                            LITERAL1
+FINDER_7M_REG_ACTIVE_POWER_TOTAL            LITERAL1
+FINDER_7M_REG_REACTIVE_POWER_TOTAL          LITERAL1
+FINDER_7M_REG_APPARENT_POWER_TOTAL          LITERAL1
+FINDER_7M_REG_POWER_FACTOR_TOTAL            LITERAL1
+FINDER_7M_REG_ENERGY_COUNTER_E1_EXP         LITERAL1
+FINDER_7M_REG_ENERGY_COUNTER_E2_EXP         LITERAL1             
+FINDER_7M_REG_ENERGY_COUNTER_E3_EXP         LITERAL1             
+FINDER_7M_REG_ENERGY_COUNTER_E4_EXP         LITERAL1             
+FINDER_7M_REG_ENERGY_COUNTER_E1             LITERAL1         
+FINDER_7M_REG_ENERGY_COUNTER_E2             LITERAL1         
+FINDER_7M_REG_ENERGY_COUNTER_E3             LITERAL1         
+FINDER_7M_REG_ENERGY_COUNTER_E4             LITERAL1         
+FINDER_7M_REG_ENERGY_COUNTER_XK_E1          LITERAL1             
+FINDER_7M_REG_ENERGY_COUNTER_XK_E2          LITERAL1             
+FINDER_7M_REG_ENERGY_COUNTER_XK_E3          LITERAL1             
+FINDER_7M_REG_ENERGY_COUNTER_XK_E4          LITERAL1             
+MODBUS_BAUDRATE                             LITERAL1                   
+MODBUS_SERIAL_PARAMETERS                    LITERAL1                   
+MODBUS_BIT_DURATION                         LITERAL1           
+MODBUS_PRE_DELAY                            LITERAL1           
+MODBUS_POST_DELAY                           LITERAL1           
+INVALID_DATA                                LITERAL1       
+
