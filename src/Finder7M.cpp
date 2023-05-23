@@ -1,17 +1,17 @@
 /**
  * This file is part of Finder 7M for Finder Opta.
- * 
+ *
  * Finder 7M for Finder Opta is free software: you can redistribute it and/or modify it under the terms
  * of the GNU Lesser General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or (at your option) any later version.
- * 
+ *
  * Finder 7M for Finder Opta is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License along with Foobar.
- * If not, see <https://www.gnu.org/licenses/>. 
-*/
+ * If not, see <https://www.gnu.org/licenses/>.
+ */
 
 #include <ArduinoModbus.h>
 #include <ArduinoRS485.h>
@@ -77,28 +77,28 @@ uint16_t Finder7M::getHardwareReference(uint8_t address)
 Measure Finder7M::getMIDInActiveEnergy(uint8_t address)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_E1);
-    uint32_t e = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_E1_EXP);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_E1_EXP);
     return Measure(m, e);
 };
 
 Measure Finder7M::getMIDExActiveEnergy(uint8_t address)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_E2);
-    uint32_t e = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_E2_EXP);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_E2_EXP);
     return Measure(m, e);
 };
 
 Measure Finder7M::getMIDInReactiveEnergy(uint8_t address)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_E3);
-    uint32_t e = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_E3_EXP);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_E3_EXP);
     return Measure(m, e);
 };
 
 Measure Finder7M::getMIDExReactiveEnergy(uint8_t address)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_E4);
-    uint32_t e = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_E4_EXP);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_E4_EXP);
     return Measure(m, e);
 };
 
@@ -208,6 +208,7 @@ Measure Finder7M::convertT5(uint32_t n)
         {
             e = e - 0x80;
         }
+        e = (e & 0x0000FFFF);
         uint32_t m = n & 0x00FFFFFF;
         return Measure(m, e);
     }
@@ -224,6 +225,7 @@ Measure Finder7M::convertT6(uint32_t n)
         {
             e = e - 0x80;
         }
+        e = (e & 0x0000FFFF);
         uint32_t ms = (n & 0x00800000) >> 23;
         int32_t mv = (n & 0x007FFFFF);
         if (ms == 1)

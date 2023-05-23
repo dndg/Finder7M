@@ -1,17 +1,17 @@
 /**
  * This file is part of Finder 7M for Finder Opta.
- * 
+ *
  * Finder 7M for Finder Opta is free software: you can redistribute it and/or modify it under the terms
  * of the GNU Lesser General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or (at your option) any later version.
- * 
+ *
  * Finder 7M for Finder Opta is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License along with Foobar.
- * If not, see <https://www.gnu.org/licenses/>. 
-*/
+ * If not, see <https://www.gnu.org/licenses/>.
+ */
 
 #ifndef _FINDER_7_M_H_INCLUDED
 #define _FINDER_7_M_H_INCLUDED
@@ -49,7 +49,7 @@ constexpr auto MODBUS_BIT_DURATION = 1.f / MODBUS_BAUDRATE;
 constexpr auto MODBUS_PRE_DELAY = MODBUS_BIT_DURATION * 9.6f * 3.5f * 1e6;  // preDelay in microseconds as per Modbus RTU.
 constexpr auto MODBUS_POST_DELAY = MODBUS_BIT_DURATION * 9.6f * 3.5f * 1e6; // postDelay in microseconds as per Modbus RTU.
 
-constexpr uint32_t INVALID_DATA = 0xFFFFFFFF;
+#define INVALID_DATA 0xFFFFFFFF
 
 typedef unsigned char Finder7MSerialNumber[8];
 

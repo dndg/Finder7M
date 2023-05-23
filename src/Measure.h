@@ -11,15 +11,19 @@
  *
  * You should have received a copy of the GNU Lesser General Public License along with Foobar.
  * If not, see <https://www.gnu.org/licenses/>.
-*/
+ */
 
 #ifndef _MEASURE_H_INCLUDED
 #define _MEASURE_H_INCLUDED
 
+#include <cmath>
+
+#define INVALID_DATA 0xFFFFFFFF
+
 class Measure
 {
 public:
-    Measure(int32_t mantissa, int32_t exponent)
+    Measure(uint32_t mantissa, uint32_t exponent)
     {
         _mantissa = mantissa;
         _exponent = exponent;
@@ -28,19 +32,19 @@ public:
     /**
      * Return the measured value mantissa.
      */
-    uint32_t mantissa() { return _mantissa; };
+    int32_t mantissa() { return _mantissa; };
 
     /**
      * Return the measured value exponent.
      */
-    uint32_t exponent() { return _exponent; };
+    int16_t exponent() { return (int16_t)_exponent; };
 
     /**
      * Convert scientific notation to float.
      *
      * @warning This can reduce precision.
      */
-    float toFloat() { return (float)(_mantissa * pow(10, _exponent)); };
+    float toFloat() { return (float)(mantissa() * pow(10, exponent())); };
 
     /**
      * Return true if there was an error while reading this measure.

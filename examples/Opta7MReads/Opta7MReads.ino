@@ -79,7 +79,7 @@ void printMeasure(String label, Measure m)
     int32_t mantissa = m.mantissa();
     int32_t exponent = m.exponent();
     Serial.print("   " + label + " = ");
-    if (mantissa != INVALID_DATA || exponent != INVALID_DATA)
+    if (!m.isReadError())
     {
         Serial.println("[ mantissa=" + String(mantissa) +
                        ", exponent=" + String(exponent) +
