@@ -18,15 +18,18 @@
 
 #include <cmath>
 
-#define INVALID_DATA 0xFFFFFFFF
+#define INVALID_MANTISSA 0x01
+#define INVALID_EXPONENT 0x02
+#define INVALID_READ 0x03
 
 class Measure
 {
 public:
-    Measure(uint32_t mantissa, uint32_t exponent)
+    Measure(int32_t mantissa, int16_t exponent, int8_t error)
     {
         _mantissa = mantissa;
         _exponent = exponent;
+        _error = error;
     };
 
     /**
@@ -37,7 +40,7 @@ public:
     /**
      * Return the measured value exponent.
      */
-    int16_t exponent() { return (int16_t)_exponent; };
+    int16_t exponent() { return _exponent; };
 
     /**
      * Convert scientific notation to float.
@@ -49,11 +52,19 @@ public:
     /**
      * Return true if there was an error while reading this measure.
      */
-    bool isReadError() { return _mantissa == INVALID_DATA || _exponent == INVALID_DATA; };
+    bool isReadError() { return (_error & INVALID_READ) > 0; };
+
+    /**
+     * 1 = Invalid mantissa.
+     * 2 = Invalid exponent.
+     * 3 = Invalid mantissa and exponent or generic read error.
+     */
+    int8_t getErrorCode() { return _error; };
 
 private:
-    uint32_t _mantissa;
-    uint32_t _exponent;
+    int32_t _mantissa;
+    int16_t _exponent;
+    int8_t _error;
 };
 
 #endif

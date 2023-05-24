@@ -222,6 +222,18 @@ public:
     Measure convertT5(uint32_t n);
     /** Convert T6 encoding to Measure.*/
     Measure convertT6(uint32_t n);
+
+private:
+    /**
+     * @param mantissa As unsigned 32-bits integer.
+     * @param exponent As unsigned 32-bits integer.
+     *
+     * @return Performs validation and returns a Measure.
+     *
+     * @warning The Measure contains an error code that indicates
+     * the result of the validation.
+     */
+    Measure generateMeasure(uint32_t mantissa, uint32_t exponent);
 };
 
 #endif

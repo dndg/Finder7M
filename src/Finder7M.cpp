@@ -78,52 +78,52 @@ Measure Finder7M::getMIDInActiveEnergy(uint8_t address)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_E1);
     uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_E1_EXP);
-    return Measure(m, e);
+    return generateMeasure(m, e);
 };
 
 Measure Finder7M::getMIDExActiveEnergy(uint8_t address)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_E2);
     uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_E2_EXP);
-    return Measure(m, e);
+    return generateMeasure(m, e);
 };
 
 Measure Finder7M::getMIDInReactiveEnergy(uint8_t address)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_E3);
     uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_E3_EXP);
-    return Measure(m, e);
+    return generateMeasure(m, e);
 };
 
 Measure Finder7M::getMIDExReactiveEnergy(uint8_t address)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_E4);
     uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_E4_EXP);
-    return Measure(m, e);
+    return generateMeasure(m, e);
 };
 
 Measure Finder7M::getMIDInActiveEnergyXK(uint8_t address)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_XK_E1);
-    return Measure(m, 0);
+    return generateMeasure(m, 0);
 };
 
 Measure Finder7M::getMIDExActiveEnergyXK(uint8_t address)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_XK_E2);
-    return Measure(m, 0);
+    return generateMeasure(m, 0);
 };
 
 Measure Finder7M::getMIDInReactiveEnergyXK(uint8_t address)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_XK_E3);
-    return Measure(m, 0);
+    return generateMeasure(m, 0);
 };
 
 Measure Finder7M::getMIDExReactiveEnergyXK(uint8_t address)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_XK_E4);
-    return Measure(m, 0);
+    return generateMeasure(m, 0);
 };
 
 Measure Finder7M::getFrequency(uint8_t address)
@@ -154,7 +154,7 @@ Measure Finder7M::getApparentPowerTotal(uint8_t address)
 Measure Finder7M::getRunTime(uint8_t address)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_RUN_TIME);
-    return Measure(m, 0);
+    return generateMeasure(m, 0);
 };
 
 uint32_t Finder7M::modbus7MRead16(uint8_t addr, uint16_t reg)
@@ -210,9 +210,9 @@ Measure Finder7M::convertT5(uint32_t n)
         }
         e = (e & 0x0000FFFF);
         uint32_t m = n & 0x00FFFFFF;
-        return Measure(m, e);
+        return generateMeasure(m, e);
     }
-    return Measure(INVALID_DATA, 0);
+    return Measure(0, 0, INVALID_READ);
 };
 
 Measure Finder7M::convertT6(uint32_t n)
@@ -232,7 +232,24 @@ Measure Finder7M::convertT6(uint32_t n)
         {
             mv = mv - 0x800000;
         }
-        return Measure(mv, e);
+        return generateMeasure(mv, e);
     }
-    return Measure(INVALID_DATA, 0);
+    return Measure(0, 0, INVALID_READ);
+};
+
+Measure Finder7M::generateMeasure(uint32_t mantissa, uint32_t exponent)
+{
+    if (mantissa == INVALID_DATA && exponent == INVALID_DATA)
+    {
+        return Measure(0, 0, INVALID_READ);
+    }
+    if (mantissa == INVALID_DATA)
+    {
+        return Measure(0, exponent, INVALID_MANTISSA);
+    }
+    if (exponent == INVALID_DATA)
+    {
+        return Measure(mantissa, 0, INVALID_EXPONENT);
+    }
+    return Measure((int32_t)mantissa, (int16_t)exponent, 0);
 };

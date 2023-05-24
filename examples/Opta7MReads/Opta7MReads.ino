@@ -65,7 +65,7 @@ void loop()
     Measure voltage = f7m.getVoltage(MODBUS_7M_ADDRESS);
     printMeasure("Voltage", voltage);
     Measure pt = f7m.getActivePowerTotal(MODBUS_7M_ADDRESS);
-    printMeasure("Active Power Total", frequency);
+    printMeasure("Active Power Total", pt);
     Measure qt = f7m.getReactivePowerTotal(MODBUS_7M_ADDRESS);
     printMeasure("Reactive Power Total", qt);
     Measure st = f7m.getApparentPowerTotal(MODBUS_7M_ADDRESS);
@@ -88,7 +88,16 @@ void printMeasure(String label, Measure m)
     }
     else
     {
-        Serial.println("read error!");
+        uint8_t err = m.getErrorCode();
+        switch (err)
+        {
+        case 1:
+            Serial.println("error while reading mantissa!");
+        case 2:
+            Serial.println("error while reading exponent!");
+        case 3:
+            Serial.println("read error!");
+        }
     }
 };
 
