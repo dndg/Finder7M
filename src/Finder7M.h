@@ -93,7 +93,7 @@ public:
      *
      * @param address Modbus address of the target device.
      *
-     * @return A Measure containing the value.
+     * @return A Measure containing the value in Wh.
      */
     Measure getMIDInActiveEnergy(uint8_t address);
     /**
@@ -102,7 +102,7 @@ public:
      *
      * @param address Modbus address of the target device.
      *
-     * @return A Measure containing the value.
+     * @return A Measure containing the value in Wh.
      */
     Measure getMIDExActiveEnergy(uint8_t address);
     /**
@@ -111,7 +111,7 @@ public:
      *
      * @param address Modbus address of the target device.
      *
-     * @return A Measure containing the value.
+     * @return A Measure containing the value in varh.
      */
     Measure getMIDInReactiveEnergy(uint8_t address);
     /**
@@ -120,40 +120,60 @@ public:
      *
      * @param address Modbus address of the target device.
      *
-     * @return A Measure containing the value.
+     * @return A Measure containing the value in varh.
      */
     Measure getMIDExReactiveEnergy(uint8_t address);
 
     /**
-     * Read the Import Active Energy multiplied by 1000.
+     * Read the Import Active Energy multiplied by 100.
      *
      * @param address Modbus address of the target device.
      *
-     * @return A Measure containing the value.
+     * @return A Measure containing the value in 0,1*Wh.
+     *
+     * @warning Despite the name the x1000 registers are actually
+     * multiplied by 100 as their unit of measure is the unit of measure
+     * of the corresponding MID register multiplied by 10^(-1).
+     * In this case the value is expressed in 0,1*Wh.
      */
     Measure getMIDInActiveEnergyXK(uint8_t address);
     /**
-     * Read the Export Active Energy multiplied by 1000.
+     * Read the Export Active Energy multiplied by 100.
      *
      * @param address Modbus address of the target device.
      *
-     * @return A Measure containing the value.
+     * @return A Measure containing the value in 0,1*Wh.
+     *
+     * @warning Despite the name the x1000 registers are actually
+     * multiplied by 100 as their unit of measure is the unit of measure
+     * of the corresponding MID register multiplied by 10^(-1).
+     * In this case the value is expressed in 0,1*Wh.
      */
     Measure getMIDExActiveEnergyXK(uint8_t address);
     /**
-     * Read the Import Reactive Energy multiplied by 1000.
+     * Read the Import Reactive Energy multiplied by 100.
      *
      * @param address Modbus address of the target device.
      *
-     * @return A Measure containing the value.
+     * @return A Measure containing the value in 0,1*varh.
+     *
+     * @warning Despite the name the x1000 registers are actually
+     * multiplied by 100 as their unit of measure is the unit of measure
+     * of the corresponding MID register multiplied by 10^(-1).
+     * In this case the value is expressed in 0,1*varh.
      */
     Measure getMIDInReactiveEnergyXK(uint8_t address);
     /**
-     * Read the Export Reactive Energy multiplied by 1000.
+     * Read the Export Reactive Energy multiplied by 100.
      *
      * @param address Modbus address of the target device.
      *
-     * @return A Measure containing the value.
+     * @return A Measure containing the value in 0,1*varh.
+     *
+     * @warning Despite the name the x1000 registers are actually
+     * multiplied by 100 as the measure is the unit of measure
+     * of the corresponding MID register multiplied by 10^(-1).
+     * In this case the value is expressed in 0,1*varh.
      */
     Measure getMIDExReactiveEnergyXK(uint8_t address);
     /**
