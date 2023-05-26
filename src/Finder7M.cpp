@@ -19,11 +19,15 @@
 
 #include "Finder7M.h"
 
-boolean Finder7M::init()
+boolean Finder7M::init(uint32_t baudrate, uint32_t serialParameters)
 {
-    RS485.setDelays(MODBUS_PRE_DELAY, MODBUS_POST_DELAY);
+    float bitDuration = 1.f / baudrate;
+    uint32_t preDelay = bitDuration * 9.6f * 3.5f * 1e6;  // preDelay in microseconds as per Modbus RTU.
+    uint32_t postDelay = bitDuration * 9.6f * 3.5f * 1e6; // postDelay in microseconds as per Modbus RTU.
+
+    RS485.setDelays(preDelay, postDelay);
     ModbusRTUClient.setTimeout(200);
-    return (ModbusRTUClient.begin(MODBUS_BAUDRATE, MODBUS_SERIAL_PARAMETERS) ? true : false);
+    return ModbusRTUClient.begin(baudrate, serialParameters) == 1;
 };
 
 bool Finder7M::getSerialNumber(uint8_t address, Finder7MSerialNumber &buffer)

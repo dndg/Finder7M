@@ -43,12 +43,6 @@ constexpr int FINDER_7M_REG_ENERGY_COUNTER_XK_E2 = 464;  // Energy counter E2 x 
 constexpr int FINDER_7M_REG_ENERGY_COUNTER_XK_E3 = 466;  // Energy counter E3 x 1000                (T3)
 constexpr int FINDER_7M_REG_ENERGY_COUNTER_XK_E4 = 468;  // Energy counter E4 x 1000                (T3)
 
-constexpr auto MODBUS_BAUDRATE = 19200;
-constexpr auto MODBUS_SERIAL_PARAMETERS = SERIAL_8N2;
-constexpr auto MODBUS_BIT_DURATION = 1.f / MODBUS_BAUDRATE;
-constexpr auto MODBUS_PRE_DELAY = MODBUS_BIT_DURATION * 9.6f * 3.5f * 1e6;  // preDelay in microseconds as per Modbus RTU.
-constexpr auto MODBUS_POST_DELAY = MODBUS_BIT_DURATION * 9.6f * 3.5f * 1e6; // postDelay in microseconds as per Modbus RTU.
-
 #define INVALID_DATA 0xFFFFFFFF
 
 typedef unsigned char Finder7MSerialNumber[8];
@@ -58,12 +52,15 @@ class Finder7M
 public:
     Finder7M() {}
     /**
-     * Set preDelay and postDelay and start the Modbus RTY client
+     * Set preDelay and postDelay and start the Modbus RTU client
      * with the parameters for the Finder 7M.
+     *
+     * @param baudrate Defaults to 38400, if not specified.
+     * @param serialParameters Defaults to 8N1, if not specified.
      *
      * @return true in case of success, false otherwise.
      */
-    boolean init();
+    boolean init(uint32_t baudrate = 38400, uint32_t serialParameters = SERIAL_8N1);
     /**
      * Read serial number of 8 characters and return it into
      * buffer.
