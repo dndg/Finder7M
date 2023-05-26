@@ -91,17 +91,21 @@ void printMeasure(String label, Measure m)
         uint8_t err = m.getErrorCode();
         switch (err)
         {
-        case 1:
+        case INVALID_MANTISSA:
             Serial.println("error while reading mantissa!");
-        case 2:
+            break;
+        case INVALID_EXPONENT:
             Serial.println("error while reading exponent!");
-        case 3:
+            break;
+        case INVALID_READ:
             Serial.println("read error!");
+            break;
         }
     }
 };
 
 void printUint(String label, uint16_t n)
 {
-    Serial.println("   " + label + " = " + (n != INVALID_DATA ? String(n) : String("read error!")));
+    int32_t n32 = (int16_t)n;
+    Serial.println("   " + label + " = " + (n32 != INVALID_DATA ? String(n) : String("read error!")));
 };
