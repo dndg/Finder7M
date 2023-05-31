@@ -1,11 +1,11 @@
 #include <Finder7M.h>
 
 Finder7M f7m;
-constexpr uint8_t MODBUS_7M_ADDRESS = 2;
+constexpr uint8_t MODBUS_7M_ADDRESS = 20;
 
 void setup()
 {
-    Serial.begin(9600);
+    Serial.begin(38400);
 
     if (!f7m.init())
     {

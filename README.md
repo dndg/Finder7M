@@ -2,7 +2,7 @@
 
 This library allows to easily read counters from Finder 7M devices connected via ModBus to a Finder Opta, providing a number of built-in functions that simplify the process of reading measurements from both Measurement Instruments Directive (MID) certified counters and custom-configured counters.
 
-The library also includes functions to directly read registers via ModBus and perform conversions.
+The library also includes functions to directly read registers via ModBus and perform conversions. Additionally, using this library it is possible to reset the counters of the Finder 7M.
 
 ## Usage
 
@@ -12,11 +12,11 @@ The code below shows a basic example of how to use this library:
 #include <Finder7M.h>
 
 Finder7M f7m;
-constexpr uint8_t MODBUS_7M_ADDRESS = 2;
+constexpr uint8_t MODBUS_7M_ADDRESS = 20;
 
 void setup()
 {
-    Serial.begin(9600);
+    Serial.begin(38400);
     if (!f7m.init())
     {
         while (1)
@@ -34,6 +34,13 @@ void loop()
 ```
 
 For more details take a look at [the example sketch](./examples/Opta7MReads/Opta7MReads.ino) provided with the library.
+
+### Notes
+
+When using this library keep in mind that:
+* The default baudrate is `38400`.
+* The default configuration is `8-N-1`.
+* When writing to registers you should always write one register at a time.
 
 ## Resources
 
