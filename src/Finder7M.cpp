@@ -21,12 +21,22 @@
 
 boolean Finder7M::init(uint32_t baudrate, uint32_t serialParameters)
 {
+    uint32_t preDelay, postDelay, timeout;
     float bitDuration = 1.f / baudrate;
-    uint32_t preDelay = bitDuration * 9.6f * 3.5f * 1e6;  // preDelay in microseconds as per Modbus RTU.
-    uint32_t postDelay = bitDuration * 9.6f * 3.5f * 1e6; // postDelay in microseconds as per Modbus RTU.
+
+    if (baudrate <= 19200)
+    {
+        preDelay = postDelay = bitDuration * 9.6f * 3.5f * 1e6;
+        timeout = 200;
+    }
+    else
+    {
+        preDelay = postDelay = 1750;
+        timeout = 1000;
+    }
 
     RS485.setDelays(preDelay, postDelay);
-    ModbusRTUClient.setTimeout(200);
+    ModbusRTUClient.setTimeout(timeout);
     return ModbusRTUClient.begin(baudrate, serialParameters) == 1;
 };
 
