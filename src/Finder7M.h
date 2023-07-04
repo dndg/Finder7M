@@ -16,6 +16,8 @@
 #ifndef _FINDER_7_M_H_INCLUDED
 #define _FINDER_7_M_H_INCLUDED
 
+#include <ArduinoRS485.h>
+
 #include "Measure.h"
 
 constexpr int FINDER_7M_REG_SERIAL_NUMBER = 9;           // Serial Number                                   (T_Str8)

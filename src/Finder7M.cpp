@@ -14,7 +14,6 @@
  */
 
 #include <ArduinoModbus.h>
-#include <ArduinoRS485.h>
 #include <math.h>
 
 #include "Finder7M.h"
