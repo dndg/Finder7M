@@ -19,7 +19,7 @@
 
 #include "Finder7M.h"
 
-boolean Finder7M::init(uint32_t baudrate, uint32_t serialParameters)
+bool Finder7M::init(uint32_t baudrate, uint32_t serialParameters)
 {
     uint32_t preDelay, postDelay, timeout;
     float bitDuration = 1.f / baudrate;
@@ -171,7 +171,7 @@ Measure Finder7M::getRunTime(uint8_t address)
     return generateMeasure(m, 0);
 };
 
-boolean Finder7M::resetCounter(uint8_t address, uint8_t counterNumber)
+bool Finder7M::resetCounter(uint8_t address, uint8_t counterNumber)
 {
     if (counterNumber < 1 || counterNumber > 16)
     {
@@ -180,17 +180,17 @@ boolean Finder7M::resetCounter(uint8_t address, uint8_t counterNumber)
     uint16_t toWrite = 0x0001 << (counterNumber - 1);
     if (modbus6MWrite16(address, FINDER_7M_REG_RESET_ENERGY, toWrite) == 1)
     {
-        boolean res = saveSettings(address);
+        bool res = saveSettings(address);
         return res;
     }
     return false;
 };
 
-boolean Finder7M::resetCounters(uint8_t address)
+bool Finder7M::resetCounters(uint8_t address)
 {
     if (modbus6MWrite16(address, FINDER_7M_REG_RESET_ENERGY, 0xFFFF) == 1)
     {
-        boolean res = saveSettings(address);
+        bool res = saveSettings(address);
         return res;
     }
     return false;
@@ -237,7 +237,7 @@ uint32_t Finder7M::modbus7MRead32(uint8_t addr, uint16_t reg)
     return INVALID_DATA;
 };
 
-boolean Finder7M::modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite)
+bool Finder7M::modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite)
 {
     uint8_t attempts = 3;
     while (attempts > 0)
@@ -294,17 +294,17 @@ Measure Finder7M::convertT6(uint32_t n)
     return Measure(0, 0, INVALID_READ);
 };
 
-boolean Finder7M::saveSettings(uint8_t address)
+bool Finder7M::saveSettings(uint8_t address)
 {
     return modbus6MWrite16(address, FINDER_7M_REG_OPERATOR_COMMAND, 0x0001) == 1;
 };
 
-boolean Finder7M::resetSettings(uint8_t address)
+bool Finder7M::resetSettings(uint8_t address)
 {
     return modbus6MWrite16(address, FINDER_7M_REG_OPERATOR_COMMAND, 0x0002) == 1;
 };
 
-boolean Finder7M::restartDevice(uint8_t address)
+bool Finder7M::restartDevice(uint8_t address)
 {
     return modbus6MWrite16(address, FINDER_7M_REG_OPERATOR_COMMAND, 0x0003) == 1;
 };

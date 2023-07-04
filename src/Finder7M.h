@@ -62,7 +62,7 @@ public:
      *
      * @return true in case of success, false otherwise.
      */
-    boolean init(uint32_t baudrate = 38400, uint32_t serialParameters = SERIAL_8N1);
+    bool init(uint32_t baudrate = 38400, uint32_t serialParameters = SERIAL_8N1);
     /**
      * Read serial number of 8 characters and return it into
      * buffer.
@@ -225,7 +225,7 @@ public:
      * @warning Counter resets are executed immediately so you don't need to
      * save settings afterwards.
      */
-    boolean resetCounter(uint8_t address, uint8_t counterNumber);
+    bool resetCounter(uint8_t address, uint8_t counterNumber);
     /**
      * Reset all energy counters on the target device.
      *
@@ -236,7 +236,7 @@ public:
      * @warning Counter resets are executed immediately so you don't need to
      * save settings afterwards.
      */
-    boolean resetCounters(uint8_t address);
+    bool resetCounters(uint8_t address);
     /**
      * Read a 16-bits register.
      *
@@ -266,17 +266,17 @@ public:
      *
      * @return true in case of success, false otherwise.
      */
-    boolean modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite);
+    bool modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite);
     /** Convert T5 encoding to Measure.*/
     Measure convertT5(uint32_t n);
     /** Convert T6 encoding to Measure.*/
     Measure convertT6(uint32_t n);
     /** Save the settings on the target device. */
-    boolean saveSettings(uint8_t address);
+    bool saveSettings(uint8_t address);
     /** Reset the settings on the target device. */
-    boolean resetSettings(uint8_t address);
+    bool resetSettings(uint8_t address);
     /** Restart the target device. */
-    boolean restartDevice(uint8_t address);
+    bool restartDevice(uint8_t address);
 
 private:
     /**

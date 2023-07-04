@@ -38,6 +38,7 @@ For more details take a look at [the example sketch](./examples/Opta7MReads/Opta
 ### Notes
 
 When using this library keep in mind that:
+
 * The default baudrate is `38400`.
 * The default configuration is `8-N-1`.
 * When writing to registers you should always write one register at a time.
@@ -54,4 +55,4 @@ This library is released under the GNU Lesser General Public License license. Fo
 
 ## Contact
 
-For communication reach out to iot@dndg.it.
+For communication reach out to <iot@dndg.it>.
