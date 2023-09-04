@@ -22,7 +22,7 @@
 
 constexpr int FINDER_7M_REG_SERIAL_NUMBER = 9;           // Serial Number                                   (T_Str8)
 constexpr int FINDER_7M_REG_SOFTWARE_REFERENCE = 13;     // Software Reference                              (T1)
-constexpr int FINDER_7M_REG_HARDWARE_REFERENCE = 14;     // Hawrdware Reference                             (T_Str2)
+constexpr int FINDER_7M_REG_HARDWARE_REFERENCE = 14;     // Hardware Reference                             (T_Str2)
 constexpr int FINDER_7M_REG_RUN_TIME = 103;              // Run time                                        (T3)
 constexpr int FINDER_7M_REG_FREQUENCY = 105;             // Frequency                                       (T5)
 constexpr int FINDER_7M_REG_U1 = 107;                    // Voltage U1                                      (T5)
@@ -268,7 +268,7 @@ public:
      *
      * @return true in case of success, false otherwise.
      */
-    bool modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite);
+    bool modbus7MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite);
     /** Convert T5 encoding to Measure.*/
     Measure convertT5(uint32_t n);
     /** Convert T6 encoding to Measure.*/

@@ -177,7 +177,7 @@ bool Finder7M::resetCounter(uint8_t address, uint8_t counterNumber)
         return false;
     }
     uint16_t toWrite = 0x0001 << (counterNumber - 1);
-    if (modbus6MWrite16(address, FINDER_7M_REG_RESET_ENERGY, toWrite) == 1)
+    if (modbus7MWrite16(address, FINDER_7M_REG_RESET_ENERGY, toWrite) == 1)
     {
         bool res = saveSettings(address);
         return res;
@@ -187,7 +187,7 @@ bool Finder7M::resetCounter(uint8_t address, uint8_t counterNumber)
 
 bool Finder7M::resetCounters(uint8_t address)
 {
-    if (modbus6MWrite16(address, FINDER_7M_REG_RESET_ENERGY, 0xFFFF) == 1)
+    if (modbus7MWrite16(address, FINDER_7M_REG_RESET_ENERGY, 0xFFFF) == 1)
     {
         bool res = saveSettings(address);
         return res;
@@ -236,7 +236,7 @@ uint32_t Finder7M::modbus7MRead32(uint8_t addr, uint16_t reg)
     return INVALID_DATA;
 };
 
-bool Finder7M::modbus6MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite)
+bool Finder7M::modbus7MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite)
 {
     uint8_t attempts = 3;
     while (attempts > 0)
@@ -295,17 +295,17 @@ Measure Finder7M::convertT6(uint32_t n)
 
 bool Finder7M::saveSettings(uint8_t address)
 {
-    return modbus6MWrite16(address, FINDER_7M_REG_OPERATOR_COMMAND, 0x0001) == 1;
+    return modbus7MWrite16(address, FINDER_7M_REG_OPERATOR_COMMAND, 0x0001) == 1;
 };
 
 bool Finder7M::resetSettings(uint8_t address)
 {
-    return modbus6MWrite16(address, FINDER_7M_REG_OPERATOR_COMMAND, 0x0002) == 1;
+    return modbus7MWrite16(address, FINDER_7M_REG_OPERATOR_COMMAND, 0x0002) == 1;
 };
 
 bool Finder7M::restartDevice(uint8_t address)
 {
-    return modbus6MWrite16(address, FINDER_7M_REG_OPERATOR_COMMAND, 0x0003) == 1;
+    return modbus7MWrite16(address, FINDER_7M_REG_OPERATOR_COMMAND, 0x0003) == 1;
 };
 
 Measure Finder7M::generateMeasure(uint32_t mantissa, uint32_t exponent)
