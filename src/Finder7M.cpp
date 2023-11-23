@@ -55,16 +55,16 @@ bool Finder7M::getSerialNumber(uint8_t address, Finder7MSerialNumber &buffer)
             data3 != INVALID_DATA &&
             data4 != INVALID_DATA)
         {
-            buffer[0] = data1 & 0xff00 >> 8;
+            buffer[0] = (data1 & 0xff00) >> 8;
             buffer[1] = data1 & 0x00ff;
 
-            buffer[2] = data2 & 0xff00 >> 8;
+            buffer[2] = (data2 & 0xff00) >> 8;
             buffer[3] = data2 & 0x00ff;
 
-            buffer[4] = data3 & 0xff00 >> 8;
+            buffer[4] = (data3 & 0xff00) >> 8;
             buffer[5] = data3 & 0x00ff;
 
-            buffer[6] = data4 & 0xff00 >> 8;
+            buffer[6] = (data4 & 0xff00) >> 8;
             buffer[7] = data4 & 0x00ff;
             return true;
         }
