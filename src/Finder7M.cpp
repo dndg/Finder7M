@@ -164,6 +164,118 @@ Measure Finder7M::getApparentPowerTotal(uint8_t address)
     return convertT5(modbus7MRead32(address, FINDER_7M_REG_APPARENT_POWER_TOTAL));
 };
 
+Measure Finder7M::getEnergyCounterC1(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C1);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C1_EXP);
+    return generateMeasure(m, e);
+};
+
+Measure Finder7M::getEnergyCounterC2(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C2);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C2_EXP);
+    return generateMeasure(m, e);
+};
+
+Measure Finder7M::getEnergyCounterC3(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C3);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C3_EXP);
+    return generateMeasure(m, e);
+};
+
+Measure Finder7M::getEnergyCounterC4(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C4);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C4_EXP);
+    return generateMeasure(m, e);
+};
+
+Measure Finder7M::getEnergyCounterC5(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C5);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C5_EXP);
+    return generateMeasure(m, e);
+};
+
+Measure Finder7M::getEnergyCounterC6(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C6);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C6_EXP);
+    return generateMeasure(m, e);
+};
+
+Measure Finder7M::getEnergyCounterC7(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C7);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C7_EXP);
+    return generateMeasure(m, e);
+};
+
+Measure Finder7M::getEnergyCounterC8(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C8);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C8_EXP);
+    return generateMeasure(m, e);
+};
+
+Measure Finder7M::getEnergyCounterC9(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C9);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C9_EXP);
+    return generateMeasure(m, e);
+};
+
+Measure Finder7M::getEnergyCounterC10(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C10);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C10_EXP);
+    return generateMeasure(m, e);
+};
+
+Measure Finder7M::getEnergyCounterC11(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C11);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C11_EXP);
+    return generateMeasure(m, e);
+};
+
+Measure Finder7M::getEnergyCounterC12(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C12);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C12_EXP);
+    return generateMeasure(m, e);
+};
+
+Measure Finder7M::getEnergyCounterC13(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C13);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C13_EXP);
+    return generateMeasure(m, e);
+};
+
+Measure Finder7M::getEnergyCounterC14(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C14);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C14_EXP);
+    return generateMeasure(m, e);
+};
+
+Measure Finder7M::getEnergyCounterC15(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C15);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C15_EXP);
+    return generateMeasure(m, e);
+};
+
+Measure Finder7M::getEnergyCounterC16(uint8_t address)
+{
+    uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C16);
+    uint32_t e = modbus7MRead16(address, FINDER_7M_REG_ENERGY_COUNTER_C16_EXP);
+    return generateMeasure(m, e);
+};
+
 Measure Finder7M::getRunTime(uint8_t address)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_RUN_TIME);

@@ -72,6 +72,40 @@ void loop()
     printMeasure("Apparent Power Total", st);
     Measure runTime = f7m.getRunTime(MODBUS_7M_ADDRESS);
     printMeasure("Run Time", runTime);
+
+    // Configurable counters.
+    Measure c1 = f7m.getEnergyCounterC1(MODBUS_7M_ADDRESS);
+    printMeasure("C1", c1);
+    Measure c2 = f7m.getEnergyCounterC2(MODBUS_7M_ADDRESS);
+    printMeasure("C2", c2);
+    Measure c3 = f7m.getEnergyCounterC3(MODBUS_7M_ADDRESS);
+    printMeasure("C3", c3);
+    Measure c4 = f7m.getEnergyCounterC4(MODBUS_7M_ADDRESS);
+    printMeasure("C4", c4);
+    Measure c5 = f7m.getEnergyCounterC5(MODBUS_7M_ADDRESS);
+    printMeasure("C5", c5);
+    Measure c6 = f7m.getEnergyCounterC6(MODBUS_7M_ADDRESS);
+    printMeasure("C6", c6);
+    Measure c7 = f7m.getEnergyCounterC7(MODBUS_7M_ADDRESS);
+    printMeasure("C7", c7);
+    Measure c8 = f7m.getEnergyCounterC8(MODBUS_7M_ADDRESS);
+    printMeasure("C8", c8);
+    Measure c9 = f7m.getEnergyCounterC9(MODBUS_7M_ADDRESS);
+    printMeasure("C9", c9);
+    Measure c10 = f7m.getEnergyCounterC10(MODBUS_7M_ADDRESS);
+    printMeasure("C10", c10);
+    Measure c11 = f7m.getEnergyCounterC11(MODBUS_7M_ADDRESS);
+    printMeasure("C11", c11);
+    Measure c12 = f7m.getEnergyCounterC12(MODBUS_7M_ADDRESS);
+    printMeasure("C12", c12);
+    Measure c13 = f7m.getEnergyCounterC13(MODBUS_7M_ADDRESS);
+    printMeasure("C13", c13);
+    Measure c14 = f7m.getEnergyCounterC14(MODBUS_7M_ADDRESS);
+    printMeasure("C14", c14);
+    Measure c15 = f7m.getEnergyCounterC15(MODBUS_7M_ADDRESS);
+    printMeasure("C15", c15);
+    Measure c16 = f7m.getEnergyCounterC16(MODBUS_7M_ADDRESS);
+    printMeasure("C16", c16);
 }
 
 void printMeasure(String label, Measure m)

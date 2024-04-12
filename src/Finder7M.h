@@ -20,32 +20,64 @@
 
 #include "Measure.h"
 
-constexpr int FINDER_7M_REG_SERIAL_NUMBER = 9;           // Serial Number                                   (T_Str8)
-constexpr int FINDER_7M_REG_SOFTWARE_REFERENCE = 13;     // Software Reference                              (T1)
-constexpr int FINDER_7M_REG_HARDWARE_REFERENCE = 14;     // Hardware Reference                             (T_Str2)
-constexpr int FINDER_7M_REG_RUN_TIME = 103;              // Run time                                        (T3)
-constexpr int FINDER_7M_REG_FREQUENCY = 105;             // Frequency                                       (T5)
-constexpr int FINDER_7M_REG_U1 = 107;                    // Voltage U1                                      (T5)
-constexpr int FINDER_7M_REG_U2 = 109;                    // Voltage U2                                      (T5)
-constexpr int FINDER_7M_REG_U3 = 111;                    // Voltage U3                                      (T5)
-constexpr int FINDER_7M_REG_ACTIVE_POWER_TOTAL = 140;    // Active Power Total (Pt)                         (T6)
-constexpr int FINDER_7M_REG_REACTIVE_POWER_TOTAL = 148;  // Reactive Power Total (Qt)                       (T6)
-constexpr int FINDER_7M_REG_APPARENT_POWER_TOTAL = 156;  // Apparent Power Total (St)                       (T5)
-constexpr int FINDER_7M_REG_POWER_FACTOR_TOTAL = 164;    // Power Factor Total (PFt)                        (T7)
-constexpr int FINDER_7M_REG_ENERGY_COUNTER_E1_EXP = 401; // Energy counter E1 Exponent                      (T2)
-constexpr int FINDER_7M_REG_ENERGY_COUNTER_E2_EXP = 402; // Energy counter E2 Exponent                      (T2)
-constexpr int FINDER_7M_REG_ENERGY_COUNTER_E3_EXP = 403; // Energy counter E3 Exponent                      (T2)
-constexpr int FINDER_7M_REG_ENERGY_COUNTER_E4_EXP = 404; // Energy counter E4 Exponent                      (T2)
-constexpr int FINDER_7M_REG_ENERGY_COUNTER_E1 = 406;     // Energy counter E1                               (T3)
-constexpr int FINDER_7M_REG_ENERGY_COUNTER_E2 = 408;     // Energy counter E2                               (T3)
-constexpr int FINDER_7M_REG_ENERGY_COUNTER_E3 = 410;     // Energy counter E3                               (T3)
-constexpr int FINDER_7M_REG_ENERGY_COUNTER_E4 = 412;     // Energy counter E4                               (T3)
-constexpr int FINDER_7M_REG_ENERGY_COUNTER_XK_E1 = 462;  // Energy counter E1 x 1000                        (T3)
-constexpr int FINDER_7M_REG_ENERGY_COUNTER_XK_E2 = 464;  // Energy counter E2 x 1000                        (T3)
-constexpr int FINDER_7M_REG_ENERGY_COUNTER_XK_E3 = 466;  // Energy counter E3 x 1000                        (T3)
-constexpr int FINDER_7M_REG_ENERGY_COUNTER_XK_E4 = 468;  // Energy counter E4 x 1000                        (T3)
-constexpr int FINDER_7M_REG_OPERATOR_COMMAND = 12;       // Operator command register                       (T1)
-constexpr int FINDER_7M_REG_RESET_ENERGY = 31;           // Reset energy command register                   (T1)
+constexpr int FINDER_7M_REG_SERIAL_NUMBER = 9;            // Serial Number                                   (T_Str8)
+constexpr int FINDER_7M_REG_SOFTWARE_REFERENCE = 13;      // Software Reference                              (T1)
+constexpr int FINDER_7M_REG_HARDWARE_REFERENCE = 14;      // Hardware Reference                             (T_Str2)
+constexpr int FINDER_7M_REG_RUN_TIME = 103;               // Run time                                        (T3)
+constexpr int FINDER_7M_REG_FREQUENCY = 105;              // Frequency                                       (T5)
+constexpr int FINDER_7M_REG_U1 = 107;                     // Voltage U1                                      (T5)
+constexpr int FINDER_7M_REG_U2 = 109;                     // Voltage U2                                      (T5)
+constexpr int FINDER_7M_REG_U3 = 111;                     // Voltage U3                                      (T5)
+constexpr int FINDER_7M_REG_ACTIVE_POWER_TOTAL = 140;     // Active Power Total (Pt)                         (T6)
+constexpr int FINDER_7M_REG_REACTIVE_POWER_TOTAL = 148;   // Reactive Power Total (Qt)                       (T6)
+constexpr int FINDER_7M_REG_APPARENT_POWER_TOTAL = 156;   // Apparent Power Total (St)                       (T5)
+constexpr int FINDER_7M_REG_POWER_FACTOR_TOTAL = 164;     // Power Factor Total (PFt)                        (T7)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_E1_EXP = 401;  // Energy counter E1 Exponent                      (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_E2_EXP = 402;  // Energy counter E2 Exponent                      (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_E3_EXP = 403;  // Energy counter E3 Exponent                      (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_E4_EXP = 404;  // Energy counter E4 Exponent                      (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_E1 = 406;      // Energy counter E1                               (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_E2 = 408;      // Energy counter E2                               (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_E3 = 410;      // Energy counter E3                               (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_E4 = 412;      // Energy counter E4                               (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C1 = 414;      // Energy counter C1                               (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C2 = 416;      // Energy counter C2                               (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C3 = 418;      // Energy counter C3                               (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C4 = 420;      // Energy counter C4                               (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C5 = 422;      // Energy counter C5                               (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C6 = 424;      // Energy counter C6                               (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C7 = 426;      // Energy counter C7                               (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C8 = 428;      // Energy counter C8                               (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C9 = 430;      // Energy counter C9                               (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C10 = 432;     // Energy counter C10                              (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C11 = 434;     // Energy counter C11                              (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C12 = 436;     // Energy counter C12                              (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C13 = 438;     // Energy counter C13                              (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C14 = 440;     // Energy counter C14                              (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C15 = 442;     // Energy counter C15                              (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C16 = 444;     // Energy counter C16                              (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C1_EXP = 446;  // Energy counter C1 Exponent                      (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C2_EXP = 447;  // Energy counter C2 Exponent                      (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C3_EXP = 448;  // Energy counter C3 Exponent                      (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C4_EXP = 449;  // Energy counter C4 Exponent                      (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C5_EXP = 450;  // Energy counter C5 Exponent                      (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C6_EXP = 451;  // Energy counter C6 Exponent                      (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C7_EXP = 452;  // Energy counter C7 Exponent                      (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C8_EXP = 453;  // Energy counter C8 Exponent                      (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C9_EXP = 454;  // Energy counter C9 Exponent                      (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C10_EXP = 455; // Energy counter C10 Exponent                     (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C11_EXP = 456; // Energy counter C11 Exponent                     (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C12_EXP = 457; // Energy counter C12 Exponent                     (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C13_EXP = 458; // Energy counter C13 Exponent                     (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C14_EXP = 459; // Energy counter C14 Exponent                     (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C15_EXP = 460; // Energy counter C15 Exponent                     (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_C16_EXP = 461; // Energy counter C16 Exponent                     (T2)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_XK_E1 = 462;   // Energy counter E1 x 1000                        (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_XK_E2 = 464;   // Energy counter E2 x 1000                        (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_XK_E3 = 466;   // Energy counter E3 x 1000                        (T3)
+constexpr int FINDER_7M_REG_ENERGY_COUNTER_XK_E4 = 468;   // Energy counter E4 x 1000                        (T3)
+constexpr int FINDER_7M_REG_OPERATOR_COMMAND = 12;        // Operator command register                       (T1)
+constexpr int FINDER_7M_REG_RESET_ENERGY = 31;            // Reset energy command register                   (T1)
 
 #define INVALID_DATA 0xFFFFFFFF
 
@@ -216,6 +248,118 @@ public:
      * @return A Measure containing the run time of the device.
      */
     Measure getRunTime(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C1.
+     */
+    Measure getEnergyCounterC1(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C2.
+     */
+    Measure getEnergyCounterC2(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C3.
+     */
+    Measure getEnergyCounterC3(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C4.
+     */
+    Measure getEnergyCounterC4(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C5.
+     */
+    Measure getEnergyCounterC5(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C6.
+     */
+    Measure getEnergyCounterC6(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C7.
+     */
+    Measure getEnergyCounterC7(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C8.
+     */
+    Measure getEnergyCounterC8(uint8_t address);
+        /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C9.
+     */
+    Measure getEnergyCounterC9(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C10.
+     */
+    Measure getEnergyCounterC10(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C11.
+     */
+    Measure getEnergyCounterC11(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C12.
+     */
+    Measure getEnergyCounterC12(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C13.
+     */
+    Measure getEnergyCounterC13(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C14.
+     */
+    Measure getEnergyCounterC14(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C15.
+     */
+    Measure getEnergyCounterC15(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the value of the programmable
+     * energy counter C16.
+     */
+    Measure getEnergyCounterC16(uint8_t address);
     /**
      * Reset a given energy counter on the target device.
      *
