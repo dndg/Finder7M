@@ -29,6 +29,9 @@ constexpr int FINDER_7M_REG_U1 = 107;                     // Voltage U1         
 constexpr int FINDER_7M_REG_U2 = 109;                     // Voltage U2                                      (T5)
 constexpr int FINDER_7M_REG_U3 = 111;                     // Voltage U3                                      (T5)
 constexpr int FINDER_7M_REG_ACTIVE_POWER_TOTAL = 140;     // Active Power Total (Pt)                         (T6)
+constexpr int FINDER_7M_REG_ACTIVE_POWER_PHASE_1 = 142;   // Active Power Phase 1 (P1)                       (T6)
+constexpr int FINDER_7M_REG_ACTIVE_POWER_PHASE_2 = 144;   // Active Power Phase 2 (P2)                       (T6)
+constexpr int FINDER_7M_REG_ACTIVE_POWER_PHASE_3 = 146;   // Active Power Phase 3 (P3)                       (T6)
 constexpr int FINDER_7M_REG_REACTIVE_POWER_TOTAL = 148;   // Reactive Power Total (Qt)                       (T6)
 constexpr int FINDER_7M_REG_APPARENT_POWER_TOTAL = 156;   // Apparent Power Total (St)                       (T5)
 constexpr int FINDER_7M_REG_POWER_FACTOR_TOTAL = 164;     // Power Factor Total (PFt)                        (T7)
@@ -231,6 +234,27 @@ public:
     /**
      * @param address Modbus address of the target device.
      *
+     * @return A Measure containing the Active Power
+     * Phase 1 (P1) measured on the device.
+     */
+    Measure getActivePowerPhase1(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the Active Power
+     * Phase 2 (P2) measured on the device.
+     */
+    Measure getActivePowerPhase2(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A Measure containing the Active Power
+     * Phase 3 (P3) measured on the device.
+     */
+    Measure getActivePowerPhase3(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
      * @return A Measure containing the Reactive Power
      * Total (Qt) measured on the device.
      */
@@ -304,7 +328,7 @@ public:
      * energy counter C8.
      */
     Measure getEnergyCounterC8(uint8_t address);
-        /**
+    /**
      * @param address Modbus address of the target device.
      *
      * @return A Measure containing the value of the programmable

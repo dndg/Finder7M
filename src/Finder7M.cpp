@@ -154,6 +154,21 @@ Measure Finder7M::getActivePowerTotal(uint8_t address)
     return convertT6(modbus7MRead32(address, FINDER_7M_REG_ACTIVE_POWER_TOTAL));
 };
 
+Measure Finder7M::getActivePowerPhase1(uint8_t address)
+{
+    return convertT6(modbus7MRead32(address, FINDER_7M_REG_ACTIVE_POWER_PHASE_1));
+}
+
+Measure Finder7M::getActivePowerPhase2(uint8_t address)
+{
+    return convertT6(modbus7MRead32(address, FINDER_7M_REG_ACTIVE_POWER_PHASE_2));
+}
+
+Measure Finder7M::getActivePowerPhase3(uint8_t address)
+{
+    return convertT6(modbus7MRead32(address, FINDER_7M_REG_ACTIVE_POWER_PHASE_3));
+}
+
 Measure Finder7M::getReactivePowerTotal(uint8_t address)
 {
     return convertT6(modbus7MRead32(address, FINDER_7M_REG_REACTIVE_POWER_TOTAL));
