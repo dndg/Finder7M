@@ -76,37 +76,30 @@ bool Finder7M::getSerialNumber(uint8_t address, Finder7MSerialNumber &buffer)
     while (attempts > 0)
     {
         ModbusRTUClient.requestFrom(address, INPUT_REGISTERS, FINDER_7M_REG_SERIAL_NUMBER, 4);
-        uint32_t data1 = ModbusRTUClient.read();
-        uint32_t data2 = ModbusRTUClient.read();
-        uint32_t data3 = ModbusRTUClient.read();
-        uint32_t data4 = ModbusRTUClient.read();
-        if (
-            data1 != INVALID_DATA &&
-            data2 != INVALID_DATA &&
-            data3 != INVALID_DATA &&
-            data4 != INVALID_DATA)
+        uint32_t data;
+        bool validData = true;
+
+        for (int i = 0; i < 4; i++)
         {
-            buffer[0] = (data1 & 0xff00) >> 8;
-            buffer[1] = data1 & 0x00ff;
+            data = ModbusRTUClient.read();
+            if (data == INVALID_DATA)
+            {
+                validData = false;
+                break;
+            }
+            buffer[2 * i] = (data & 0xff00) >> 8;
+            buffer[2 * i + 1] = data & 0x00ff;
+        }
 
-            buffer[2] = (data2 & 0xff00) >> 8;
-            buffer[3] = data2 & 0x00ff;
-
-            buffer[4] = (data3 & 0xff00) >> 8;
-            buffer[5] = data3 & 0x00ff;
-
-            buffer[6] = (data4 & 0xff00) >> 8;
-            buffer[7] = data4 & 0x00ff;
+        if (validData)
+        {
             return true;
         }
-        else
-        {
-            attempts -= 1;
-            delay(10);
-        }
+        attempts -= 1;
+        delay(10);
     }
     return false;
-};
+}
 
 uint16_t Finder7M::getSoftwareReference(uint8_t address)
 {

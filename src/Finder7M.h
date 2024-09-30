@@ -23,7 +23,7 @@
 constexpr int FINDER_7M_REG_MODEL_NUMBER = 1;             // Model Number                                    (T_Str16)
 constexpr int FINDER_7M_REG_SERIAL_NUMBER = 9;            // Serial Number                                   (T_Str8)
 constexpr int FINDER_7M_REG_SOFTWARE_REFERENCE = 13;      // Software Reference                              (T1)
-constexpr int FINDER_7M_REG_HARDWARE_REFERENCE = 14;      // Hardware Reference                             (T_Str2)
+constexpr int FINDER_7M_REG_HARDWARE_REFERENCE = 14;      // Hardware Reference                              (T_Str2)
 constexpr int FINDER_7M_REG_RUN_TIME = 103;               // Run time                                        (T3)
 constexpr int FINDER_7M_REG_FREQUENCY = 105;              // Frequency                                       (T5)
 constexpr int FINDER_7M_REG_U1 = 107;                     // Voltage U1                                      (T5)
