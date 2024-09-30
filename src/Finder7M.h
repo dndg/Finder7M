@@ -20,6 +20,7 @@
 
 #include "Measure.h"
 
+constexpr int FINDER_7M_REG_MODEL_NUMBER = 1;             // Model Number                                    (T_Str16)
 constexpr int FINDER_7M_REG_SERIAL_NUMBER = 9;            // Serial Number                                   (T_Str8)
 constexpr int FINDER_7M_REG_SOFTWARE_REFERENCE = 13;      // Software Reference                              (T1)
 constexpr int FINDER_7M_REG_HARDWARE_REFERENCE = 14;      // Hardware Reference                             (T_Str2)
@@ -85,6 +86,7 @@ constexpr int FINDER_7M_REG_RESET_ENERGY = 31;            // Reset energy comman
 #define INVALID_DATA 0xFFFFFFFF
 
 typedef unsigned char Finder7MSerialNumber[8];
+typedef unsigned char Finder7MModelNumber[16];
 
 class Finder7M
 {
@@ -100,6 +102,16 @@ public:
      * @return true in case of success, false otherwise.
      */
     bool init(uint32_t baudrate = 38400, uint32_t serialParameters = SERIAL_8N1);
+    /**
+     * Read model number of 16 characters and return it into
+     * buffer.
+     *
+     * @param address Modbus address of the target device.
+     * @param buffer A buffer of type Finder7MModelNumber.
+     *
+     * @return true in case of success, false otherwise.
+     */
+    bool getModelNumber(uint8_t address, Finder7MModelNumber &buffer);
     /**
      * Read serial number of 8 characters and return it into
      * buffer.

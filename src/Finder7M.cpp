@@ -39,6 +39,37 @@ bool Finder7M::init(uint32_t baudrate, uint32_t serialParameters)
     return ModbusRTUClient.begin(baudrate, serialParameters) == 1;
 };
 
+bool Finder7M::getModelNumber(uint8_t address, Finder7MModelNumber &buffer)
+{
+    uint8_t attempts = 3;
+    while (attempts > 0)
+    {
+        ModbusRTUClient.requestFrom(address, INPUT_REGISTERS, FINDER_7M_REG_MODEL_NUMBER, 8);
+        uint32_t data;
+        bool validData = true;
+
+        for (int i = 0; i < 8; i++)
+        {
+            data = ModbusRTUClient.read();
+            if (data == INVALID_DATA)
+            {
+                validData = false;
+                break;
+            }
+            buffer[2 * i] = (data & 0xff00) >> 8;
+            buffer[2 * i + 1] = data & 0x00ff;
+        }
+
+        if (validData)
+        {
+            return true;
+        }
+        attempts -= 1;
+        delay(10);
+    }
+    return false;
+}
+
 bool Finder7M::getSerialNumber(uint8_t address, Finder7MSerialNumber &buffer)
 {
     uint8_t attempts = 3;

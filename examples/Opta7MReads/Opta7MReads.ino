@@ -21,12 +21,24 @@ void loop()
 
     Serial.println("** Reading 7M at address " + String(MODBUS_7M_ADDRESS));
 
-    // Serial Number
-    Finder7MSerialNumber buffer;
-    Serial.print("   Serial Number = ");
-    if (f7m.getSerialNumber(MODBUS_7M_ADDRESS, buffer))
+    // Model Number
+    Finder7MModelNumber modelBuffer;
+    Serial.print("   Serial Model = ");
+    if (f7m.getModelNumber(MODBUS_7M_ADDRESS, modelBuffer))
     {
-        Serial.println(String(buffer, 8));
+        Serial.println(String(modelBuffer, 16));
+    }
+    else
+    {
+        Serial.println("read error!");
+    }
+
+    // Serial Number
+    Finder7MSerialNumber serialBuffer;
+    Serial.print("   Serial Number = ");
+    if (f7m.getSerialNumber(MODBUS_7M_ADDRESS, serialBuffer))
+    {
+        Serial.println(String(serialBuffer, 8));
     }
     else
     {
