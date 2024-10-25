@@ -18,7 +18,7 @@
 
 #include "Finder7M.h"
 
-bool Finder7M::init(uint32_t baudrate, uint32_t serialParameters)
+bool Finder7M::init(uint32_t baudrate, uint32_t serialParameters, uint32_t timeoutMs)
 {
     uint32_t preDelay, postDelay, timeout;
     float bitDuration = 1.f / baudrate;
@@ -34,14 +34,18 @@ bool Finder7M::init(uint32_t baudrate, uint32_t serialParameters)
         timeout = 1000;
     }
 
+    if (timeoutMs > 0)
+    {
+        timeout = timeoutMs;
+    }
+
     RS485.setDelays(preDelay, postDelay);
     ModbusRTUClient.setTimeout(timeout);
     return ModbusRTUClient.begin(baudrate, serialParameters) == 1;
 };
 
-bool Finder7M::getModelNumber(uint8_t address, Finder7MModelNumber &buffer)
+bool Finder7M::getModelNumber(uint8_t address, Finder7MModelNumber &buffer, uint8_t attempts)
 {
-    uint8_t attempts = 3;
     while (attempts > 0)
     {
         ModbusRTUClient.requestFrom(address, INPUT_REGISTERS, FINDER_7M_REG_MODEL_NUMBER, 8);
@@ -70,9 +74,8 @@ bool Finder7M::getModelNumber(uint8_t address, Finder7MModelNumber &buffer)
     return false;
 }
 
-bool Finder7M::getSerialNumber(uint8_t address, Finder7MSerialNumber &buffer)
+bool Finder7M::getSerialNumber(uint8_t address, Finder7MSerialNumber &buffer, uint8_t attempts)
 {
-    uint8_t attempts = 3;
     while (attempts > 0)
     {
         ModbusRTUClient.requestFrom(address, INPUT_REGISTERS, FINDER_7M_REG_SERIAL_NUMBER, 4);
@@ -346,9 +349,8 @@ bool Finder7M::resetCounters(uint8_t address)
     return false;
 };
 
-uint32_t Finder7M::modbus7MRead16(uint8_t addr, uint16_t reg)
+uint32_t Finder7M::modbus7MRead16(uint8_t addr, uint16_t reg, uint8_t attempts)
 {
-    uint32_t attempts = 3;
     while (attempts > 0)
     {
         ModbusRTUClient.requestFrom(addr, INPUT_REGISTERS, reg, 1);
@@ -366,9 +368,8 @@ uint32_t Finder7M::modbus7MRead16(uint8_t addr, uint16_t reg)
     return INVALID_DATA;
 };
 
-uint32_t Finder7M::modbus7MRead32(uint8_t addr, uint16_t reg)
+uint32_t Finder7M::modbus7MRead32(uint8_t addr, uint16_t reg, uint8_t attempts)
 {
-    uint8_t attempts = 3;
     while (attempts > 0)
     {
         ModbusRTUClient.requestFrom(addr, INPUT_REGISTERS, reg, 2);
@@ -387,9 +388,8 @@ uint32_t Finder7M::modbus7MRead32(uint8_t addr, uint16_t reg)
     return INVALID_DATA;
 };
 
-bool Finder7M::modbus7MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite)
+bool Finder7M::modbus7MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite, uint8_t attempts)
 {
-    uint8_t attempts = 3;
     while (attempts > 0)
     {
         if (ModbusRTUClient.holdingRegisterWrite(address, reg, toWrite) == 1)

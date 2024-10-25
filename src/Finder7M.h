@@ -98,30 +98,34 @@ public:
      *
      * @param baudrate Defaults to 38400, if not specified.
      * @param serialParameters Defaults to 8N1, if not specified.
+     * @param timeoutMs Timeout in ms, if not specified the function
+     * will internally use the best value according to Modbus specs.
      *
      * @return true in case of success, false otherwise.
      */
-    bool init(uint32_t baudrate = 38400, uint32_t serialParameters = SERIAL_8N1);
+    bool init(uint32_t baudrate = 38400, uint32_t serialParameters = SERIAL_8N1, uint32_t timeoutMs = 0);
     /**
      * Read model number of 16 characters and return it into
      * buffer.
      *
      * @param address Modbus address of the target device.
      * @param buffer A buffer of type Finder7MModelNumber.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool getModelNumber(uint8_t address, Finder7MModelNumber &buffer);
+    bool getModelNumber(uint8_t address, Finder7MModelNumber &buffer, uint8_t attempts = 3);
     /**
      * Read serial number of 8 characters and return it into
      * buffer.
      *
      * @param address Modbus address of the target device.
      * @param buffer A buffer of type Finder7MSerialNumber.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool getSerialNumber(uint8_t address, Finder7MSerialNumber &buffer);
+    bool getSerialNumber(uint8_t address, Finder7MSerialNumber &buffer, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
      *
@@ -424,10 +428,11 @@ public:
      *
      * @param addr Modbus id of the target device.
      * @param reg Start address of the register.
+     * @param attempts Number of attempts before returning error.
      *
      * @return The read value or INVALID_DATA.
      */
-    uint32_t modbus7MRead16(uint8_t addr, uint16_t reg);
+    uint32_t modbus7MRead16(uint8_t addr, uint16_t reg, uint8_t attempts = 3);
     /**
      * Read two consecutive 16-bits registers and compose them
      * into a single 32-bits value, by shifting the first value
@@ -435,20 +440,22 @@ public:
      *
      * @param addr Modbus id of the target device.
      * @param reg Start address of the register.
+     * @param attempts Number of attempts before returning error.
      *
      * @return The composed value or INVALID_DATA.
      */
-    uint32_t modbus7MRead32(uint8_t addr, uint16_t reg);
+    uint32_t modbus7MRead32(uint8_t addr, uint16_t reg, uint8_t attempts = 3);
     /**
      * Write 8-bits or 16-bits values to a given register.
      *
      * @param address Modbus id of the target device.
      * @param reg Start address of the destination register.
      * @param toWrite Content that will be written to the destination register.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      */
-    bool modbus7MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite);
+    bool modbus7MWrite16(uint8_t address, uint16_t reg, uint16_t toWrite, uint8_t attempts = 3);
     /** Convert T5 encoding to Measure.*/
     Measure convertT5(uint32_t n);
     /** Convert T6 encoding to Measure.*/
