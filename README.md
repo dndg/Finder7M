@@ -1,8 +1,13 @@
 # Finder 7M for Finder Opta library
 
-This library allows to easily read counters from Finder 7M devices connected via ModBus to a Finder Opta, providing a number of built-in functions that simplify the process of reading measurements from both Measurement Instruments Directive (MID) certified counters and custom-configured counters.
+This library allows to easily read counters from Finder 7M devices connected
+via ModBus to a Finder Opta, providing a number of built-in functions that
+simplify the process of reading measurements from both Measurement Instruments
+Directive (MID) certified counters and custom-configured counters.
 
-The library also includes functions to directly read registers via ModBus and perform conversions. Additionally, using this library it is possible to reset the counters of the Finder 7M.
+The library also includes functions to directly read registers via ModBus and
+perform conversions. Additionally, using this library it is possible to reset
+the counters of the Finder 7M.
 
 ## Usage
 
@@ -33,7 +38,8 @@ void loop()
 }
 ```
 
-For more details take a look at [the example sketch](./examples/Opta7MReads/Opta7MReads.ino) provided with the library.
+For more details take a look at [the example
+sketch](./examples/Opta7MReads/Opta7MReads.ino) provided with the library.
 
 ### Notes
 
@@ -45,13 +51,17 @@ When using this library keep in mind that:
 
 ## Resources
 
-* [Getting started with Opta](https://opta.findernet.com/en/tutorial/getting-started).
-* [Finder 7M.38 user's manual](https://cdn.findernet.com/app/uploads/manual7M38_EN.pdf).
-* [ModBus over Serial Line](https://www.modbus.org/docs/Modbus_over_serial_line_V1_02.pdf).
+* [Getting started with
+  Opta](https://opta.findernet.com/en/tutorial/getting-started).
+* [Finder 7M.38 user's
+  manual](https://cdn.findernet.com/app/uploads/manual7M38_EN.pdf).
+* [ModBus over Serial
+  Line](https://www.modbus.org/docs/Modbus_over_serial_line_V1_02.pdf).
 
 ## License
 
-This library is released under the GNU Lesser General Public License license. For more details read [the full license](./LICENSE.txt).
+This library is released under the GNU Lesser General Public License license.
+For more details read [the full license](./LICENSE.txt).
 
 ## Contact
 
