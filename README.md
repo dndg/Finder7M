@@ -11,7 +11,8 @@ the counters of the Finder 7M.
 
 ## Usage
 
-The code below shows a basic example of how to use this library:
+The code below shows an example of how to use this library to read the Import
+Active Energy from the MID Certified register of a Finder 7M:
 
 ```cpp
 #include <Finder7M.h>
@@ -24,17 +25,41 @@ void setup()
     Serial.begin(38400);
     if (!f7m.init())
     {
-        while (1)
-        {
-        }
+        while (1);
     }
 }
 
 void loop()
 {
     Measure inActive = f7m.getMIDInActiveEnergy(MODBUS_7M_ADDRESS);
-    Serial.println(String(inActive.mantissa()));
-    Serial.println(String(inActive.exponent()));
+    Serial.println(inActive.mantissa());
+    Serial.println(inActive.exponent());
+}
+```
+
+Instead, the code below shows how to read the total Power Factor:
+
+```cpp
+#include <Finder7M.h>
+
+Finder7M f7m;
+constexpr uint8_t MODBUS_7M_ADDRESS = 20;
+
+void setup()
+{
+    Serial.begin(38400);
+    if (!f7m.init())
+    {
+        while (1);
+    }
+}
+
+void loop()
+{
+    PowerFactorMeasure powerFactorTotal = f7m.getPowerFactorTotal(MODBUS_7M_ADDRESS);
+    Serial.println(powerFactorTotal.isExport());
+    Serial.println(powerFactorTotal.isInductive());
+    Serial.println(powerFactorTotal.toFloat());
 }
 ```
 
@@ -65,4 +90,4 @@ For more details read [the full license](./LICENSE.txt).
 
 ## Contact
 
-For communication reach out to <iot@dndg.it>.
+For inquiries contact <iot@dndg.it>.
