@@ -19,6 +19,7 @@
 #include <ArduinoRS485.h>
 
 #include "Measure.h"
+#include "PowerFactorMeasure.h"
 
 constexpr int FINDER_7M_REG_MODEL_NUMBER = 1;             // Model Number                                    (T_Str16)
 constexpr int FINDER_7M_REG_SERIAL_NUMBER = 9;            // Serial Number                                   (T_Str8)
@@ -460,6 +461,8 @@ public:
     Measure convertT5(uint32_t n);
     /** Convert T6 encoding to Measure.*/
     Measure convertT6(uint32_t n);
+    /** Convert T7 encoding to PowerFactorMeasure.*/
+    PowerFactorMeasure convertT7(uint32_t n);
     /** Save the settings on the target device. */
     bool saveSettings(uint8_t address);
     /** Reset the settings on the target device. */

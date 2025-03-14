@@ -444,6 +444,42 @@ Measure Finder7M::convertT6(uint32_t n)
     return Measure(0, 0, INVALID_READ);
 };
 
+PowerFactorMeasure Finder7M::convertT7(uint32_t n)
+{
+    if (n != INVALID_DATA)
+    {
+        bool isImport;
+        switch ((n & 0xFF000000) >> 24)
+        {
+        case 0x00:
+            isImport = true;
+            break;
+        case 0xFF:
+            isImport = false;
+            break;
+        default:
+            return PowerFactorMeasure(true, true, 0, INVALID_IMPORT_BITMASK);
+        }
+
+        bool isInductive;
+        switch ((n & 0x00FF0000) >> 16)
+        {
+        case 0x00:
+            isInductive = true;
+            break;
+        case 0xFF:
+            isInductive = false;
+            break;
+        default:
+            return PowerFactorMeasure(true, true, 0, INVALID_INDUCTIVE_BITMASK);
+        }
+
+        int32_t mv = (n & 0xFFFF);
+        return PowerFactorMeasure(isImport, isInductive, mv, 0);
+    }
+    return PowerFactorMeasure(true, true, 0, INVALID_READ);
+};
+
 bool Finder7M::saveSettings(uint8_t address)
 {
     return modbus7MWrite16(address, FINDER_7M_REG_OPERATOR_COMMAND, 0x0001) == 1;

@@ -52,14 +52,14 @@ public:
     /**
      * Return true if there was an error while reading this measure.
      */
-    bool isReadError() { return (_error & INVALID_READ) > 0; };
+    virtual bool isReadError() { return (_error & INVALID_READ) > 0; };
 
     /**
-     * 1 = Invalid mantissa.
-     * 2 = Invalid exponent.
-     * 3 = Invalid mantissa and exponent or generic read error.
+     * 0x01 = Invalid mantissa.
+     * 0x02 = Invalid exponent.
+     * 0x03 = Invalid mantissa and exponent or generic read error.
      */
-    int8_t getErrorCode() { return _error; };
+    virtual int8_t getErrorCode() { return _error; };
 
 private:
     int32_t _mantissa;
