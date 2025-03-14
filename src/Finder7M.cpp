@@ -318,6 +318,30 @@ Measure Finder7M::getEnergyCounterC16(uint8_t address)
     return generateMeasure(m, e);
 };
 
+PowerFactorMeasure Finder7M::getPowerFactorTotal(uint8_t address)
+{
+    uint32_t pf = modbus7MRead32(address, FINDER_7M_REG_POWER_FACTOR_TOTAL);
+    return convertT7(pf);
+}
+
+PowerFactorMeasure Finder7M::getPowerFactorPhase1(uint8_t address)
+{
+    uint32_t pf = modbus7MRead32(address, FINDER_7M_REG_POWER_FACTOR_PHASE_1);
+    return convertT7(pf);
+}
+
+PowerFactorMeasure Finder7M::getPowerFactorPhase2(uint8_t address)
+{
+    uint32_t pf = modbus7MRead32(address, FINDER_7M_REG_POWER_FACTOR_PHASE_2);
+    return convertT7(pf);
+}
+
+PowerFactorMeasure Finder7M::getPowerFactorPhase3(uint8_t address)
+{
+    uint32_t pf = modbus7MRead32(address, FINDER_7M_REG_POWER_FACTOR_PHASE_3);
+    return convertT7(pf);
+}
+
 Measure Finder7M::getRunTime(uint8_t address)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_RUN_TIME);
@@ -474,7 +498,7 @@ PowerFactorMeasure Finder7M::convertT7(uint32_t n)
             return PowerFactorMeasure(true, true, 0, INVALID_INDUCTIVE_BITMASK);
         }
 
-        int32_t mv = (n & 0xFFFF);
+        int32_t mv = (n & 0x0000FFFF);
         return PowerFactorMeasure(isImport, isInductive, mv, 0);
     }
     return PowerFactorMeasure(true, true, 0, INVALID_READ);

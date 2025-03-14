@@ -24,25 +24,17 @@ void loop()
 
     Serial.println("** Reading 7M at address " + String(MODBUS_7M_ADDRESS));
 
-    // Read some Measures and print them
-    Measure inActive = f7m.getMIDInActiveEnergy(MODBUS_7M_ADDRESS);
-    printMeasure("IN Active Energy", inActive);
-    Measure frequency = f7m.getFrequency(MODBUS_7M_ADDRESS);
-    printMeasure("Frequency", frequency);
-    Measure voltage = f7m.getVoltage(MODBUS_7M_ADDRESS);
-    printMeasure("Voltage", voltage);
-    Measure pt = f7m.getActivePowerTotal(MODBUS_7M_ADDRESS);
-    printMeasure("Active Power Total", pt);
-
-    // Then read the Power Factor Total
-    uint32_t pft = f7m.modbus7MRead32(MODBUS_7M_ADDRESS, REG_PF_T);
-    PowerFactorMeasure powerFactorTotal = f7m.convertT7(pft);
+    // Read the Power Factor total
+    PowerFactorMeasure powerFactorTotal = f7m.getPowerFactorTotal(MODBUS_7M_ADDRESS);
     printPFMeasure("Power Factor Total", powerFactorTotal);
 
-    // Then read the Power Factor L1
-    uint32_t pfl1 = f7m.modbus7MRead32(MODBUS_7M_ADDRESS, REG_PF_L1);
-    PowerFactorMeasure powerFactorL1 = f7m.convertT7(pfl1);
-    printPFMeasure("Power Factor L1", powerFactorL1);
+    // Then read the Power Factor on the phases
+    PowerFactorMeasure powerFactor1 = f7m.getPowerFactorPhase1(MODBUS_7M_ADDRESS);
+    printPFMeasure("Power Factor Phase 1", powerFactor1);
+    PowerFactorMeasure powerFactor2 = f7m.getPowerFactorPhase2(MODBUS_7M_ADDRESS);
+    printPFMeasure("Power Factor Phase 2", powerFactor2);
+    PowerFactorMeasure powerFactor3 = f7m.getPowerFactorPhase3(MODBUS_7M_ADDRESS);
+    printPFMeasure("Power Factor Phase 3", powerFactor3);
 }
 
 void printMeasure(String label, Measure m)

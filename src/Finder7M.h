@@ -37,6 +37,9 @@ constexpr int FINDER_7M_REG_ACTIVE_POWER_PHASE_3 = 146;   // Active Power Phase 
 constexpr int FINDER_7M_REG_REACTIVE_POWER_TOTAL = 148;   // Reactive Power Total (Qt)                       (T6)
 constexpr int FINDER_7M_REG_APPARENT_POWER_TOTAL = 156;   // Apparent Power Total (St)                       (T5)
 constexpr int FINDER_7M_REG_POWER_FACTOR_TOTAL = 164;     // Power Factor Total (PFt)                        (T7)
+constexpr int FINDER_7M_REG_POWER_FACTOR_PHASE_1 = 166;   // Power Factor Phase 1 (PF1)                      (T7)
+constexpr int FINDER_7M_REG_POWER_FACTOR_PHASE_2 = 168;   // Power Factor Phase 2 (PF2)                      (T7)
+constexpr int FINDER_7M_REG_POWER_FACTOR_PHASE_3 = 170;   // Power Factor Phase 3 (PF3)                      (T7)
 constexpr int FINDER_7M_REG_ENERGY_COUNTER_E1_EXP = 401;  // Energy counter E1 Exponent                      (T2)
 constexpr int FINDER_7M_REG_ENERGY_COUNTER_E2_EXP = 402;  // Energy counter E2 Exponent                      (T2)
 constexpr int FINDER_7M_REG_ENERGY_COUNTER_E3_EXP = 403;  // Energy counter E3 Exponent                      (T2)
@@ -401,6 +404,43 @@ public:
      * energy counter C16.
      */
     Measure getEnergyCounterC16(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A PowerFactorMeasure containing the total Power Factor
+     * (PFt) measured on the device.
+     */
+    PowerFactorMeasure getPowerFactorTotal(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A PowerFactorMeasure containing the Power Factor
+     * Phase 1 (PF1) measured on the device.
+     *
+     * @warning The Power Factor Phase registers contain value 10000 as
+     * mantissa when phase is not connected.
+     */
+    PowerFactorMeasure getPowerFactorPhase1(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A PowerFactorMeasure containing the total Power Factor
+     * Phase 2 (PF2) measured on the device.
+     *
+     * @warning The Power Factor Phase registers contain value 10000 as
+     * mantissa when phase is not connected.
+     */
+    PowerFactorMeasure getPowerFactorPhase2(uint8_t address);
+    /**
+     * @param address Modbus address of the target device.
+     *
+     * @return A PowerFactorMeasure containing the total Power Factor
+     * Phase 3 (PF3) measured on the device.
+     *
+     * @warning The Power Factor Phase registers contain value 10000 as
+     * mantissa when phase is not connected.
+     */
+    PowerFactorMeasure getPowerFactorPhase3(uint8_t address);
     /**
      * Reset a given energy counter on the target device.
      *
