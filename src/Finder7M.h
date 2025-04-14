@@ -132,56 +132,63 @@ public:
     bool getSerialNumber(uint8_t address, Finder7MSerialNumber &buffer, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return The Software Reference of the device.
      */
-    uint16_t getSoftwareReference(uint8_t address);
+    uint16_t getSoftwareReference(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return The Hardware Reference of the device.
      */
-    uint16_t getHardwareReference(uint8_t address);
+    uint16_t getHardwareReference(uint8_t address, uint8_t attempts = 3);
     /**
      * Read the Import Active Energy from the
      * MID certified energy counter E1.
      *
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value in Wh.
      */
-    Measure getMIDInActiveEnergy(uint8_t address);
+    Measure getMIDInActiveEnergy(uint8_t address, uint8_t attempts = 3);
     /**
      * Read the Export Active Energy from the
      * MID certified energy counter E2.
      *
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value in Wh.
      */
-    Measure getMIDExActiveEnergy(uint8_t address);
+    Measure getMIDExActiveEnergy(uint8_t address, uint8_t attempts = 3);
     /**
      * Read the Import Reactive Energy from the
      * MID certified energy counter E3.
      *
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value in varh.
      */
-    Measure getMIDInReactiveEnergy(uint8_t address);
+    Measure getMIDInReactiveEnergy(uint8_t address, uint8_t attempts = 3);
     /**
      * Read the Export Reactive Energy from the
      * MID certified energy counter E4.
      *
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value in varh.
      */
-    Measure getMIDExReactiveEnergy(uint8_t address);
+    Measure getMIDExReactiveEnergy(uint8_t address, uint8_t attempts = 3);
     /**
      * Read the Import Active Energy multiplied by 100.
      *
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value in 0,1*Wh.
      *
@@ -190,11 +197,12 @@ public:
      * of the corresponding MID register multiplied by 10^(-1).
      * In this case the value is expressed in 0,1*Wh.
      */
-    Measure getMIDInActiveEnergyXK(uint8_t address);
+    Measure getMIDInActiveEnergyXK(uint8_t address, uint8_t attempts = 3);
     /**
      * Read the Export Active Energy multiplied by 100.
      *
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value in 0,1*Wh.
      *
@@ -203,11 +211,12 @@ public:
      * of the corresponding MID register multiplied by 10^(-1).
      * In this case the value is expressed in 0,1*Wh.
      */
-    Measure getMIDExActiveEnergyXK(uint8_t address);
+    Measure getMIDExActiveEnergyXK(uint8_t address, uint8_t attempts = 3);
     /**
      * Read the Import Reactive Energy multiplied by 100.
      *
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value in 0,1*varh.
      *
@@ -216,11 +225,12 @@ public:
      * of the corresponding MID register multiplied by 10^(-1).
      * In this case the value is expressed in 0,1*varh.
      */
-    Measure getMIDInReactiveEnergyXK(uint8_t address);
+    Measure getMIDInReactiveEnergyXK(uint8_t address, uint8_t attempts = 3);
     /**
      * Read the Export Reactive Energy multiplied by 100.
      *
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value in 0,1*varh.
      *
@@ -229,190 +239,217 @@ public:
      * of the corresponding MID register multiplied by 10^(-1).
      * In this case the value is expressed in 0,1*varh.
      */
-    Measure getMIDExReactiveEnergyXK(uint8_t address);
+    Measure getMIDExReactiveEnergyXK(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the frequency measured
      * on the device.
      */
-    Measure getFrequency(uint8_t address);
+    Measure getFrequency(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
      *
      * @return A Measure containing the voltage measured
+     * @param attempts Number of attempts before returning error.
      * on the device.
      */
-    Measure getVoltage(uint8_t address);
+    Measure getVoltage(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the Active Power
      * Total (Pt) measured on the device.
      */
-    Measure getActivePowerTotal(uint8_t address);
+    Measure getActivePowerTotal(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the Active Power
      * Phase 1 (P1) measured on the device.
      */
-    Measure getActivePowerPhase1(uint8_t address);
+    Measure getActivePowerPhase1(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the Active Power
      * Phase 2 (P2) measured on the device.
      */
-    Measure getActivePowerPhase2(uint8_t address);
+    Measure getActivePowerPhase2(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the Active Power
      * Phase 3 (P3) measured on the device.
      */
-    Measure getActivePowerPhase3(uint8_t address);
+    Measure getActivePowerPhase3(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the Reactive Power
      * Total (Qt) measured on the device.
      */
-    Measure getReactivePowerTotal(uint8_t address);
+    Measure getReactivePowerTotal(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the Apparent Power
      * Total (St) measured on the device.
      */
-    Measure getApparentPowerTotal(uint8_t address);
+    Measure getApparentPowerTotal(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the run time of the device.
      */
-    Measure getRunTime(uint8_t address);
+    Measure getRunTime(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C1.
      */
-    Measure getEnergyCounterC1(uint8_t address);
+    Measure getEnergyCounterC1(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C2.
      */
-    Measure getEnergyCounterC2(uint8_t address);
+    Measure getEnergyCounterC2(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C3.
      */
-    Measure getEnergyCounterC3(uint8_t address);
+    Measure getEnergyCounterC3(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C4.
      */
-    Measure getEnergyCounterC4(uint8_t address);
+    Measure getEnergyCounterC4(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C5.
      */
-    Measure getEnergyCounterC5(uint8_t address);
+    Measure getEnergyCounterC5(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C6.
      */
-    Measure getEnergyCounterC6(uint8_t address);
+    Measure getEnergyCounterC6(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C7.
      */
-    Measure getEnergyCounterC7(uint8_t address);
+    Measure getEnergyCounterC7(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C8.
      */
-    Measure getEnergyCounterC8(uint8_t address);
+    Measure getEnergyCounterC8(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C9.
      */
-    Measure getEnergyCounterC9(uint8_t address);
+    Measure getEnergyCounterC9(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C10.
      */
-    Measure getEnergyCounterC10(uint8_t address);
+    Measure getEnergyCounterC10(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C11.
      */
-    Measure getEnergyCounterC11(uint8_t address);
+    Measure getEnergyCounterC11(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C12.
      */
-    Measure getEnergyCounterC12(uint8_t address);
+    Measure getEnergyCounterC12(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C13.
      */
-    Measure getEnergyCounterC13(uint8_t address);
+    Measure getEnergyCounterC13(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C14.
      */
-    Measure getEnergyCounterC14(uint8_t address);
+    Measure getEnergyCounterC14(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C15.
      */
-    Measure getEnergyCounterC15(uint8_t address);
+    Measure getEnergyCounterC15(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the value of the programmable
      * energy counter C16.
      */
-    Measure getEnergyCounterC16(uint8_t address);
+    Measure getEnergyCounterC16(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A PowerFactorMeasure containing the total Power Factor
      * (PFt) measured on the device.
      */
-    PowerFactorMeasure getPowerFactorTotal(uint8_t address);
+    PowerFactorMeasure getPowerFactorTotal(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A PowerFactorMeasure containing the Power Factor
      * Phase 1 (PF1) measured on the device.
@@ -420,9 +457,10 @@ public:
      * @warning The Power Factor Phase registers contain value 10000 as
      * mantissa when phase is not connected.
      */
-    PowerFactorMeasure getPowerFactorPhase1(uint8_t address);
+    PowerFactorMeasure getPowerFactorPhase1(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A PowerFactorMeasure containing the total Power Factor
      * Phase 2 (PF2) measured on the device.
@@ -430,9 +468,10 @@ public:
      * @warning The Power Factor Phase registers contain value 10000 as
      * mantissa when phase is not connected.
      */
-    PowerFactorMeasure getPowerFactorPhase2(uint8_t address);
+    PowerFactorMeasure getPowerFactorPhase2(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A PowerFactorMeasure containing the total Power Factor
      * Phase 3 (PF3) measured on the device.
@@ -440,30 +479,32 @@ public:
      * @warning The Power Factor Phase registers contain value 10000 as
      * mantissa when phase is not connected.
      */
-    PowerFactorMeasure getPowerFactorPhase3(uint8_t address);
+    PowerFactorMeasure getPowerFactorPhase3(uint8_t address, uint8_t attempts = 3);
     /**
      * Reset a given energy counter on the target device.
      *
      * @param address Modbus address of the target device.
      * @param counterNumber Number of the energy counter that will be reset.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      *
      * @warning Counter resets are executed immediately so you don't need to
      * save settings afterwards.
      */
-    bool resetCounter(uint8_t address, uint8_t counterNumber);
+    bool resetCounter(uint8_t address, uint8_t counterNumber, uint8_t attempts = 3);
     /**
      * Reset all energy counters on the target device.
      *
      * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return true in case of success, false otherwise.
      *
      * @warning Counter resets are executed immediately so you don't need to
      * save settings afterwards.
      */
-    bool resetCounters(uint8_t address);
+    bool resetCounters(uint8_t address, uint8_t attempts = 3);
     /**
      * Read a 16-bits register.
      *
@@ -504,11 +545,11 @@ public:
     /** Convert T7 encoding to PowerFactorMeasure.*/
     PowerFactorMeasure convertT7(uint32_t n);
     /** Save the settings on the target device. */
-    bool saveSettings(uint8_t address);
+    bool saveSettings(uint8_t address, uint8_t attempts = 3);
     /** Reset the settings on the target device. */
-    bool resetSettings(uint8_t address);
+    bool resetSettings(uint8_t address, uint8_t attempts = 3);
     /** Restart the target device. */
-    bool restartDevice(uint8_t address);
+    bool restartDevice(uint8_t address, uint8_t attempts = 3);
 
 private:
     /**

@@ -9,7 +9,7 @@ void setup()
 {
     Serial.begin(38400);
 
-    if (!f7m.init())
+    if (!f7m.init(38400, SERIAL_8N1, 500))
     {
         while (1)
         {
@@ -25,6 +25,16 @@ void loop()
     {
         Serial.println("Counter C1 mantissa = " + String(m));
         Serial.println("Counter C1 exponent = " + String(e));
+    }
+    else
+    {
+        Serial.println("Read failed!");
+    }
+
+    Measure mid = f7m.getMIDInActiveEnergy(MODBUS_7M_ADDRESS, 1);
+    if (!mid.isReadError())
+    {
+        Serial.println("Mid 1 = " + String(mid.toFloat()));
     }
     else
     {
