@@ -297,12 +297,38 @@ public:
     Measure getFrequency(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
-     *
-     * @return A Measure containing the voltage measured
      * @param attempts Number of attempts before returning error.
      * on the device.
+     *
+     * @return A Measure containing the voltage measured on the
+     * device. For the 7M38 model, it is equivalent to the voltage
+     * on Phase 1.
      */
     Measure getVoltage(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     * on the device.
+     *
+     * @return A Measure containing the voltage on Phase 1.
+     */
+    Measure getVoltagePhase1(uint8_t address, uint8_t attempts);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     * on the device.
+     *
+     * @return A Measure containing the voltage on Phase 2.
+     */
+    Measure getVoltagePhase2(uint8_t address, uint8_t attempts);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     * on the device.
+     *
+     * @return A Measure containing the voltage on Phase 3.
+     */
+    Measure getVoltagePhase3(uint8_t address, uint8_t attempts);
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
