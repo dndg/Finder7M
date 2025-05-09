@@ -310,14 +310,14 @@ public:
      *
      * @return A Measure containing the voltage on Phase 1.
      */
-    Measure getVoltagePhase1(uint8_t address, uint8_t attempts);
+    Measure getVoltagePhase1(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the voltage on Phase 2.
      */
-    Measure getVoltagePhase2(uint8_t address, uint8_t attempts);
+    Measure getVoltagePhase2(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
@@ -325,7 +325,7 @@ public:
      *
      * @return A Measure containing the voltage on Phase 3.
      */
-    Measure getVoltagePhase3(uint8_t address, uint8_t attempts);
+    Measure getVoltagePhase3(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
@@ -333,7 +333,7 @@ public:
      * @return A Measure containing the phase-phase voltage on
      * Phase 1 and Phase 2.
      */
-    Measure getVoltagePhase12(uint8_t address, uint8_t attempts);
+    Measure getVoltagePhase12(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
@@ -341,7 +341,7 @@ public:
      * @return A Measure containing the phase-phase voltage on
      * Phase 2 and Phase 3.
      */
-    Measure getVoltagePhase23(uint8_t address, uint8_t attempts);
+    Measure getVoltagePhase23(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
@@ -350,7 +350,7 @@ public:
      * @return A Measure containing the phase-phase voltage on
      * Phase 3 and Phase 1.
      */
-    Measure getVoltagePhase31(uint8_t address, uint8_t attempts);
+    Measure getVoltagePhase31(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
@@ -366,21 +366,21 @@ public:
      *
      * @return A Measure containing the current on Phase 1.
      */
-    Measure getCurrentPhase1(uint8_t address, uint8_t attempts);
+    Measure getCurrentPhase1(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the current on Phase 2.
      */
-    Measure getCurrentPhase2(uint8_t address, uint8_t attempts);
+    Measure getCurrentPhase2(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the current on Phase 3.
      */
-    Measure getCurrentPhase3(uint8_t address, uint8_t attempts);
+    Measure getCurrentPhase3(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
