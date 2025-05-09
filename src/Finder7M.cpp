@@ -44,6 +44,11 @@ bool Finder7M::init(uint32_t baudrate, uint32_t serialParameters, uint32_t timeo
     return ModbusRTUClient.begin(baudrate, serialParameters) == 1;
 };
 
+void Finder7M::setTimeout(uint32_t timeoutMs)
+{
+    ModbusRTUClient.setTimeout(timeoutMs);
+};
+
 bool Finder7M::getModelNumber(uint8_t address, Finder7MModelNumber &buffer, uint8_t attempts)
 {
     while (attempts > 0)

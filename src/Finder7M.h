@@ -109,6 +109,12 @@ public:
      */
     bool init(uint32_t baudrate = 38400, uint32_t serialParameters = SERIAL_8N1, uint32_t timeoutMs = 0);
     /**
+     * Set the Modbus RTU client timeout.
+     *
+     * @param timeoutMs Timeout in ms.
+     */
+    void setTimeout(uint32_t timeoutMs);
+    /**
      * Read model number of 16 characters and return it into
      * buffer.
      *
