@@ -227,6 +227,21 @@ Measure Finder7M::getVoltagePhase31(uint8_t address, uint8_t attempts)
     return convertT5(modbus7MRead32(address, FINDER_7M_REG_U31, attempts));
 };
 
+Measure Finder7M::getPhaseAngleVoltage12(uint8_t address, uint8_t attempts)
+{
+    return convertT17(modbus7MRead16(address, FINDER_7M_REG_J_U12, attempts));
+};
+
+Measure Finder7M::getPhaseAngleVoltage23(uint8_t address, uint8_t attempts)
+{
+    return convertT17(modbus7MRead16(address, FINDER_7M_REG_J_U23, attempts));
+};
+
+Measure Finder7M::getPhaseAngleVoltage31(uint8_t address, uint8_t attempts)
+{
+    return convertT17(modbus7MRead16(address, FINDER_7M_REG_J_U31, attempts));
+};
+
 Measure Finder7M::getCurrent(uint8_t address, uint8_t attempts)
 {
     return getCurrentPhase1(address, attempts);
@@ -643,7 +658,7 @@ Measure Finder7M::convertT17(uint32_t n)
 {
     if (n != INVALID_DATA)
     {
-        return generateMeasure(n, -2);
+        return generateMeasure((int16_t)n, -2);
     }
     return Measure(0, 0, INVALID_READ);
 };

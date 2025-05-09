@@ -71,13 +71,37 @@ void loop()
     Measure exReactiveXK = f7m.getMIDExReactiveEnergyXK(MODBUS_7M_ADDRESS);
     printMeasure("EX Reactive Energy x1000", exReactiveXK);
 
+    // Current
+    Measure current1 = f7m.getCurrentPhase1(MODBUS_7M_ADDRESS);
+    printMeasure("Current Phase 1", current1);
+    Measure current2 = f7m.getCurrentPhase2(MODBUS_7M_ADDRESS);
+    printMeasure("Current Phase 2", current2);
+    Measure current3 = f7m.getCurrentPhase3(MODBUS_7M_ADDRESS);
+    printMeasure("Current Phase 3", current3);
+
+    // Voltage
+    Measure voltage1 = f7m.getVoltagePhase1(MODBUS_7M_ADDRESS);
+    printMeasure("Voltage Phase 1", voltage1);
+    Measure voltage2 = f7m.getVoltagePhase2(MODBUS_7M_ADDRESS);
+    printMeasure("Voltage Phase 2", voltage2);
+    Measure voltage3 = f7m.getVoltagePhase3(MODBUS_7M_ADDRESS);
+    printMeasure("Voltage Phase 3", voltage3);
+    Measure voltage12 = f7m.getVoltagePhase12(MODBUS_7M_ADDRESS);
+    printMeasure("Voltage Phase 1-2", voltage12);
+    Measure voltage23 = f7m.getVoltagePhase23(MODBUS_7M_ADDRESS);
+    printMeasure("Voltage Phase 2-3", voltage23);
+    Measure voltage31 = f7m.getVoltagePhase31(MODBUS_7M_ADDRESS);
+    printMeasure("Voltage Phase 3-1", voltage31);
+    Measure angleVoltage12 = f7m.getPhaseAngleVoltage12(MODBUS_7M_ADDRESS);
+    printMeasure("Phase angle voltage Phase 1-2", angleVoltage12);
+    Measure angleVoltage23 = f7m.getPhaseAngleVoltage23(MODBUS_7M_ADDRESS);
+    printMeasure("Phase angle voltage Phase 2-3", angleVoltage23);
+    Measure angleVoltage31 = f7m.getPhaseAngleVoltage31(MODBUS_7M_ADDRESS);
+    printMeasure("Phase angle voltage Phase 3-1", angleVoltage31);
+
     // Measurements
-    Measure current = f7m.getCurrent(MODBUS_7M_ADDRESS);
-    printMeasure("Current", current);
     Measure frequency = f7m.getFrequency(MODBUS_7M_ADDRESS);
     printMeasure("Frequency", frequency);
-    Measure voltage = f7m.getVoltage(MODBUS_7M_ADDRESS);
-    printMeasure("Voltage", voltage);
     Measure pt = f7m.getActivePowerTotal(MODBUS_7M_ADDRESS);
     printMeasure("Active Power Total", pt);
     Measure qt = f7m.getReactivePowerTotal(MODBUS_7M_ADDRESS);

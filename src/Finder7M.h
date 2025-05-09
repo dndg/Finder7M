@@ -354,6 +354,33 @@ public:
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
+     * on the device.
+     *
+     * @return A Measure containing the phase angle between voltage
+     * on Phase 1 and Phase 2.
+     */
+    Measure getPhaseAngleVoltage12(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     * on the device.
+     *
+     * @return A Measure containing the phase angle between voltage
+     * on Phase 2 and Phase 3.
+     */
+    Measure getPhaseAngleVoltage23(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     * on the device.
+     *
+     * @return A Measure containing the phase angle between voltage
+     * on Phase 2 and Phase 3.
+     */
+    Measure getPhaseAngleVoltage31(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
      *
      * @return A Measure containing the current measured on the
      * device. For the 7M38 model, it is equivalent to the current
