@@ -1,7 +1,7 @@
 #include <Finder7M.h>
 
 Finder7M f7m;
-constexpr uint8_t MODBUS_7M_ADDRESS = 20;
+constexpr uint8_t MODBUS_7M_ADDRESS = 1;
 constexpr uint8_t REG_ENERGY_C1 = 414;
 constexpr uint8_t REG_ENERGY_C1_EXPONENT = 446;
 
