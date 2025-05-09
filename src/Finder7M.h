@@ -669,6 +669,8 @@ public:
     Measure convertT6(uint32_t n);
     /** Convert T7 encoding to PowerFactorMeasure.*/
     PowerFactorMeasure convertT7(uint32_t n);
+    /** Convert T17 encoding to Measure.*/
+    Measure convertT17(uint32_t n);
     /** Save the settings on the target device. */
     bool saveSettings(uint8_t address, uint8_t attempts = 3);
     /** Reset the settings on the target device. */

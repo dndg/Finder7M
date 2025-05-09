@@ -639,6 +639,15 @@ PowerFactorMeasure Finder7M::convertT7(uint32_t n)
     return PowerFactorMeasure(true, true, 0, INVALID_READ);
 };
 
+Measure Finder7M::convertT17(uint32_t n)
+{
+    if (n != INVALID_DATA)
+    {
+        return generateMeasure(n, -2);
+    }
+    return Measure(0, 0, INVALID_READ);
+};
+
 bool Finder7M::saveSettings(uint8_t address, uint8_t attempts)
 {
     return modbus7MWrite16(address, FINDER_7M_REG_OPERATOR_COMMAND, 0x0001, attempts) == 1;
