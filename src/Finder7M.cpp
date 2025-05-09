@@ -212,6 +212,21 @@ Measure Finder7M::getVoltagePhase3(uint8_t address, uint8_t attempts)
     return convertT5(modbus7MRead32(address, FINDER_7M_REG_U3, attempts));
 };
 
+Measure Finder7M::getVoltagePhase12(uint8_t address, uint8_t attempts)
+{
+    return convertT5(modbus7MRead32(address, FINDER_7M_REG_U12, attempts));
+};
+
+Measure Finder7M::getVoltagePhase23(uint8_t address, uint8_t attempts)
+{
+    return convertT5(modbus7MRead32(address, FINDER_7M_REG_U23, attempts));
+};
+
+Measure Finder7M::getVoltagePhase31(uint8_t address, uint8_t attempts)
+{
+    return convertT5(modbus7MRead32(address, FINDER_7M_REG_U31, attempts));
+};
+
 Measure Finder7M::getCurrent(uint8_t address, uint8_t attempts)
 {
     return getCurrentPhase1(address, attempts);
