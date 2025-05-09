@@ -270,26 +270,56 @@ Measure Finder7M::getActivePowerTotal(uint8_t address, uint8_t attempts)
 Measure Finder7M::getActivePowerPhase1(uint8_t address, uint8_t attempts)
 {
     return convertT6(modbus7MRead32(address, FINDER_7M_REG_ACTIVE_POWER_PHASE_1, attempts));
-}
+};
 
 Measure Finder7M::getActivePowerPhase2(uint8_t address, uint8_t attempts)
 {
     return convertT6(modbus7MRead32(address, FINDER_7M_REG_ACTIVE_POWER_PHASE_2, attempts));
-}
+};
 
 Measure Finder7M::getActivePowerPhase3(uint8_t address, uint8_t attempts)
 {
     return convertT6(modbus7MRead32(address, FINDER_7M_REG_ACTIVE_POWER_PHASE_3, attempts));
-}
+};
 
 Measure Finder7M::getReactivePowerTotal(uint8_t address, uint8_t attempts)
 {
     return convertT6(modbus7MRead32(address, FINDER_7M_REG_REACTIVE_POWER_TOTAL, attempts));
 };
 
+Measure Finder7M::getReactivePowerPhase1(uint8_t address, uint8_t attempts)
+{
+    return convertT6(modbus7MRead32(address, FINDER_7M_REG_REACTIVE_POWER_PHASE_1, attempts));
+};
+
+Measure Finder7M::getReactivePowerPhase2(uint8_t address, uint8_t attempts)
+{
+    return convertT6(modbus7MRead32(address, FINDER_7M_REG_REACTIVE_POWER_PHASE_2, attempts));
+};
+
+Measure Finder7M::getReactivePowerPhase3(uint8_t address, uint8_t attempts)
+{
+    return convertT6(modbus7MRead32(address, FINDER_7M_REG_REACTIVE_POWER_PHASE_3, attempts));
+};
+
 Measure Finder7M::getApparentPowerTotal(uint8_t address, uint8_t attempts)
 {
     return convertT5(modbus7MRead32(address, FINDER_7M_REG_APPARENT_POWER_TOTAL, attempts));
+};
+
+Measure Finder7M::getApparentPowerPhase1(uint8_t address, uint8_t attempts)
+{
+    return convertT6(modbus7MRead32(address, FINDER_7M_REG_APPARENT_POWER_PHASE_1, attempts));
+};
+
+Measure Finder7M::getApparentPowerPhase2(uint8_t address, uint8_t attempts)
+{
+    return convertT6(modbus7MRead32(address, FINDER_7M_REG_APPARENT_POWER_PHASE_2, attempts));
+};
+
+Measure Finder7M::getApparentPowerPhase3(uint8_t address, uint8_t attempts)
+{
+    return convertT6(modbus7MRead32(address, FINDER_7M_REG_APPARENT_POWER_PHASE_3, attempts));
 };
 
 Measure Finder7M::getEnergyCounterC1(uint8_t address, uint8_t attempts)

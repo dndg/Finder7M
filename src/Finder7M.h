@@ -452,10 +452,58 @@ public:
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
      *
+     * @return A Measure containing the Reactive Power
+     * Phase 1 (Q1) measured on the device.
+     */
+    Measure getReactivePowerPhase1(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the Reactive Power
+     * Phase 2 (Q2) measured on the device.
+     */
+    Measure getReactivePowerPhase2(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the Reactive Power
+     * Phase 3 (Q3) measured on the device.
+     */
+    Measure getReactivePowerPhase3(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
      * @return A Measure containing the Apparent Power
      * Total (St) measured on the device.
      */
     Measure getApparentPowerTotal(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the Apparent Power
+     * Phase 1 (S1) measured on the device.
+     */
+    Measure getApparentPowerPhase1(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the Apparent Power
+     * Phase 2 (S2) measured on the device.
+     */
+    Measure getApparentPowerPhase2(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the Apparent Power
+     * Phase 3 (S3) measured on the device.
+     */
+    Measure getApparentPowerPhase3(uint8_t address, uint8_t attempts = 3);
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
