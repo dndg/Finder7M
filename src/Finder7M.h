@@ -298,7 +298,6 @@ public:
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
-     * on the device.
      *
      * @return A Measure containing the voltage measured on the
      * device. For the 7M38 model, it is equivalent to the voltage
@@ -308,7 +307,6 @@ public:
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
-     * on the device.
      *
      * @return A Measure containing the voltage on Phase 1.
      */
@@ -316,7 +314,6 @@ public:
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
-     * on the device.
      *
      * @return A Measure containing the voltage on Phase 2.
      */
@@ -329,6 +326,36 @@ public:
      * @return A Measure containing the voltage on Phase 3.
      */
     Measure getVoltagePhase3(uint8_t address, uint8_t attempts);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the current measured on the
+     * device. For the 7M38 model, it is equivalent to the current
+     * on Phase 1.
+     */
+    Measure getCurrent(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the current on Phase 1.
+     */
+    Measure getCurrentPhase1(uint8_t address, uint8_t attempts);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the current on Phase 2.
+     */
+    Measure getCurrentPhase2(uint8_t address, uint8_t attempts);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the current on Phase 3.
+     */
+    Measure getCurrentPhase3(uint8_t address, uint8_t attempts);
     /**
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.

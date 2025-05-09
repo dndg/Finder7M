@@ -72,6 +72,8 @@ void loop()
     printMeasure("EX Reactive Energy x1000", exReactiveXK);
 
     // Measurements
+    Measure current = f7m.getCurrent(MODBUS_7M_ADDRESS);
+    printMeasure("Current", current);
     Measure frequency = f7m.getFrequency(MODBUS_7M_ADDRESS);
     printMeasure("Frequency", frequency);
     Measure voltage = f7m.getVoltage(MODBUS_7M_ADDRESS);
