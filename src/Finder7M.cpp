@@ -322,6 +322,46 @@ Measure Finder7M::getApparentPowerPhase3(uint8_t address, uint8_t attempts)
     return convertT6(modbus7MRead32(address, FINDER_7M_REG_APPARENT_POWER_PHASE_3, attempts));
 };
 
+Measure Finder7M::getPowerAngleTotal(uint8_t address, uint8_t attempts)
+{
+    return convertT17(modbus7MRead16(address, FINDER_7M_REG_POWER_ANGLE_TOTAL, attempts));
+};
+
+Measure Finder7M::getInternalTemperature(uint8_t address, uint8_t attempts)
+{
+    return convertT17(modbus7MRead16(address, FINDER_7M_REG_INTERNAL_TEMPERATURE, attempts));
+};
+
+Measure Finder7M::getVoltagePhase1THD(uint8_t address, uint8_t attempts)
+{
+    return convertT16(modbus7MRead16(address, FINDER_7M_REG_THD_U1, attempts));
+};
+
+Measure Finder7M::getVoltagePhase2THD(uint8_t address, uint8_t attempts)
+{
+    return convertT16(modbus7MRead16(address, FINDER_7M_REG_THD_U2, attempts));
+};
+
+Measure Finder7M::getVoltagePhase3THD(uint8_t address, uint8_t attempts)
+{
+    return convertT16(modbus7MRead16(address, FINDER_7M_REG_THD_U3, attempts));
+};
+
+Measure Finder7M::getCurrentPhase1THD(uint8_t address, uint8_t attempts)
+{
+    return convertT16(modbus7MRead16(address, FINDER_7M_REG_THD_I1, attempts));
+};
+
+Measure Finder7M::getCurrentPhase2THD(uint8_t address, uint8_t attempts)
+{
+    return convertT16(modbus7MRead16(address, FINDER_7M_REG_THD_I2, attempts));
+};
+
+Measure Finder7M::getCurrentPhase3THD(uint8_t address, uint8_t attempts)
+{
+    return convertT16(modbus7MRead16(address, FINDER_7M_REG_THD_I3, attempts));
+};
+
 Measure Finder7M::getEnergyCounterC1(uint8_t address, uint8_t attempts)
 {
     uint32_t m = modbus7MRead32(address, FINDER_7M_REG_ENERGY_COUNTER_C1, attempts);
@@ -682,6 +722,15 @@ PowerFactorMeasure Finder7M::convertT7(uint32_t n)
         return PowerFactorMeasure(isImport, isInductive, mv, 0);
     }
     return PowerFactorMeasure(true, true, 0, INVALID_READ);
+};
+
+Measure Finder7M::convertT16(uint32_t n)
+{
+    if (n != INVALID_DATA)
+    {
+        return generateMeasure((uint16_t)n, -2);
+    }
+    return Measure(0, 0, INVALID_READ);
 };
 
 Measure Finder7M::convertT17(uint32_t n)

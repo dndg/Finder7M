@@ -508,6 +508,70 @@ public:
      * @param address Modbus address of the target device.
      * @param attempts Number of attempts before returning error.
      *
+     * @return A Measure containing the Power Angle
+     * Total (atan2(Pt,Qt)) measured on the device.
+     */
+    Measure getPowerAngleTotal(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the Internal
+     * Temperature of the device.
+     */
+    Measure getInternalTemperature(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the Total
+     * Harmonic Distortion (THD) of the Phase-1 voltage.
+     */
+    Measure getVoltagePhase1THD(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the Total
+     * Harmonic Distortion (THD) of the Phase-2 voltage.
+     */
+    Measure getVoltagePhase2THD(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the Total
+     * Harmonic Distortion (THD) of the Phase-3 voltage.
+     */
+    Measure getVoltagePhase3THD(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the Total
+     * Harmonic Distortion (THD) of the Phase-1 current.
+     */
+    Measure getCurrentPhase1THD(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the Total
+     * Harmonic Distortion (THD) of the Phase-2 current.
+     */
+    Measure getCurrentPhase2THD(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
+     * @return A Measure containing the Total
+     * Harmonic Distortion (THD) of the Phase-3 current.
+     */
+    Measure getCurrentPhase3THD(uint8_t address, uint8_t attempts = 3);
+    /**
+     * @param address Modbus address of the target device.
+     * @param attempts Number of attempts before returning error.
+     *
      * @return A Measure containing the run time of the device.
      */
     Measure getRunTime(uint8_t address, uint8_t attempts = 3);
@@ -744,6 +808,8 @@ public:
     Measure convertT6(uint32_t n);
     /** Convert T7 encoding to PowerFactorMeasure.*/
     PowerFactorMeasure convertT7(uint32_t n);
+    /** Convert T16 encoding to Measure.*/
+    Measure convertT16(uint32_t n);
     /** Convert T17 encoding to Measure.*/
     Measure convertT17(uint32_t n);
     /** Save the settings on the target device. */

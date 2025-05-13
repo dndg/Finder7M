@@ -144,6 +144,26 @@ void loop()
     printMeasure("C15", c15);
     Measure c16 = f7m.getEnergyCounterC16(MODBUS_7M_ADDRESS);
     printMeasure("C16", c16);
+
+    // Additional Measurements
+    Measure powerAngleTotal = f7m.getPowerAngleTotal(MODBUS_7M_ADDRESS);
+    printMeasure("Power Angle Total", powerAngleTotal);
+    Measure internalTemp = f7m.getInternalTemperature(MODBUS_7M_ADDRESS);
+    printMeasure("Internal Temperature", internalTemp);
+
+    // THD
+    Measure voltage1THD = f7m.getVoltagePhase1THD(MODBUS_7M_ADDRESS);
+    printMeasure("Voltage Phase 1 THD", voltage1THD);
+    Measure voltage2THD = f7m.getVoltagePhase2THD(MODBUS_7M_ADDRESS);
+    printMeasure("Voltage Phase 2 THD", voltage2THD);
+    Measure voltage3THD = f7m.getVoltagePhase3THD(MODBUS_7M_ADDRESS);
+    printMeasure("Voltage Phase 3 THD", voltage3THD);
+    Measure current1THD = f7m.getCurrentPhase1THD(MODBUS_7M_ADDRESS);
+    printMeasure("Current Phase 1 THD", current1THD);
+    Measure current2THD = f7m.getCurrentPhase2THD(MODBUS_7M_ADDRESS);
+    printMeasure("Current Phase 2 THD", current2THD);
+    Measure current3THD = f7m.getCurrentPhase3THD(MODBUS_7M_ADDRESS);
+    printMeasure("Current Phase 3 THD", current3THD);
 }
 
 void printMeasure(String label, Measure m)
